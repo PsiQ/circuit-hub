@@ -1,0 +1,101 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "Quantum Phase Estimation",
+  "copyright": "Nielsen & Chuang (2010), Quantum Computation and Quantum Information, Chapter 5.4",
+  "operations": [
+    {
+      "type": "register",
+      "id": "r1",
+      "label": "\\text{time-frequency}",
+      "size": 5
+    },
+    {
+      "type": "register",
+      "label": "\\text{signal}",
+      "id": "r3"
+    },
+    {
+      "name": "routine",
+      "input_registers": "r1",
+      "type": "routine",
+      "id": "routine1",
+      "label": "\\text{window}",
+      "tags": ""
+    },
+    {
+      "input_registers": "*",
+      "tags": "spacer",
+      "type": "separator",
+      "id": "separator2"
+    },
+    {
+      "name": "routine",
+      "label": "U",
+      "input_registers": "r3",
+      "type": "routine",
+      "id": "routine3",
+      "controlled_by": "r1[0]"
+    },
+    {
+      "name": "routine",
+      "label": "U^2",
+      "input_registers": "r3",
+      "type": "routine",
+      "id": "routine4",
+      "controlled_by": "r1[1]"
+    },
+    {
+      "name": "routine",
+      "label": "U^4",
+      "input_registers": "r3",
+      "type": "routine",
+      "id": "routine6",
+      "controlled_by": "r1[2]"
+    },
+    {
+      "name": "routine",
+      "label": "U^8",
+      "input_registers": "r3",
+      "type": "routine",
+      "id": "routine8",
+      "controlled_by": "r1[3]"
+    },
+    {
+      "input_registers": "*",
+      "tags": "ellipsis",
+      "type": "separator",
+      "id": "separator1"
+    },
+    {
+      "name": "routine",
+      "label": "U^{2^{\\lceil\\log_2(N)\\rceil}}",
+      "input_registers": "r3",
+      "type": "routine",
+      "id": "routine10",
+      "controlled_by": "r1[4]"
+    },
+    {
+      "name": "routine",
+      "input_registers": "r1",
+      "type": "routine",
+      "id": "routine2",
+      "label": "\\text{QFT}^{-1}",
+      "tags": ""
+    }
+  ],
+  "record_format": 2,
+  "modified": "2026-02-04T18:56:49.346Z",
+  "style": {
+    "title_el": {
+      "visible": true
+    },
+    "copyright_el": {
+      "visible": true
+    },
+    "container_el": {
+      "stroke": {
+        "border_style": "none"
+      }
+    }
+  }
+}

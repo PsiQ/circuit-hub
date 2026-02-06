@@ -1,0 +1,754 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "Double Factorization Select",
+  "locked": true,
+  "style": {
+    "show_rail_allocation": false,
+    "container_el": {
+      "padding": "10"
+    }
+  },
+  "operations": [
+    {
+      "id": "succ_l",
+      "type": "register",
+      "label": "\\text{succ }\\ell",
+      "style": {
+        "expanded": false
+      }
+    },
+    {
+      "id": "l",
+      "type": "register",
+      "label": "\\ell",
+      "style": {
+        "expanded": false
+      }
+    },
+    {
+      "id": "l_not_0",
+      "type": "register",
+      "label": "\\ell ≠ 0",
+      "style": {
+        "collapsed_marker_el": {
+          "visible": false
+        },
+        "expanded": false
+      }
+    },
+    {
+      "id": "xi_l",
+      "type": "register",
+      "label": "\\Xi^{(\\ell)}",
+      "style": {
+        "expanded": false
+      }
+    },
+    {
+      "id": "offset",
+      "type": "register",
+      "label": "\\text{offset}",
+      "style": {
+        "expanded": false
+      }
+    },
+    {
+      "id": "rot",
+      "type": "register",
+      "label": "\\text{rot}",
+      "style": {
+        "expanded": false
+      }
+    },
+    {
+      "id": "succ_p",
+      "type": "register",
+      "label": "\\text{succ }p",
+      "style": {
+        "expanded": false
+      }
+    },
+    {
+      "id": "p",
+      "type": "register",
+      "label": "p",
+      "style": {
+        "expanded": false
+      }
+    },
+    {
+      "id": "rotations",
+      "type": "register",
+      "label": "\\text{rotations}",
+      "style": {
+        "expanded": false
+      }
+    },
+    {
+      "id": "0",
+      "type": "register",
+      "label": "|0\\rangle",
+      "style": {
+        "collapsed_marker_el": {
+          "visible": false
+        },
+        "expanded": false
+      }
+    },
+    {
+      "id": "psi_down",
+      "type": "register",
+      "label": "|\\psi_\\downarrow\\rangle",
+      "style": {
+        "expanded": false
+      }
+    },
+    {
+      "id": "psi_up",
+      "type": "register",
+      "label": "|\\psi_\\uparrow\\rangle",
+      "style": {
+        "expanded": false
+      }
+    },
+    {
+      "id": "PREPARE",
+      "type": "routine",
+      "name": "PREPARE",
+      "label": "\\text{PREPARE}",
+      "tags": "vertical,collapse-text-vertical,expand-text-above,cyan",
+      "input_registers": "succ_l,l,l_not_0,xi_l,offset,rot,succ_p,p,rotations,0",
+      "style": {
+        "expanded": false
+      },
+      "expanded": true,
+      "children": [
+        {
+          "id": "PREPARE.prep",
+          "type": "routine",
+          "name": "prep",
+          "label": "prep",
+          "input_registers": "succ_l,l",
+          "style": {
+            "box_el": {
+              "text_direction": "up"
+            }
+          },
+          "tags": "purple"
+        },
+        {
+          "id": "PREPARE.qrom",
+          "type": "routine",
+          "name": "qrom",
+          "label": "qrom",
+          "tags": "vertical.column,blue",
+          "input_registers": "l,l_not_0,xi_l,offset,rot",
+          "style": {
+            "expanded": false
+          },
+          "expanded": false,
+          "children": [
+            {
+              "id": "routine",
+              "type": "routine",
+              "name": "in_l",
+              "label": "In_\\ell",
+              "tags": "multiplexor",
+              "input_registers": "l",
+              "controlled_by": "l_not_0"
+            },
+            {
+              "id": "routine2",
+              "type": "routine",
+              "name": "data_l",
+              "label": "data_\\ell",
+              "input_registers": "l_not_0,xi_l,offset,rot",
+              "style": {
+                "box_el": {
+                  "text_direction": "up"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "column",
+          "type": "column",
+          "style": {
+            "expanded": false
+          },
+          "input_registers": "*",
+          "children": [
+            {
+              "id": "routine3",
+              "type": "routine",
+              "name": "prep",
+              "tags": "vertical.column,purple",
+              "label": "prep_\\ell",
+              "input_registers": "xi_l,offset,rot,succ_p,p",
+              "style": {
+                "expanded": false
+              },
+              "children": [
+                {
+                  "id": "routine4",
+                  "type": "routine",
+                  "name": "in",
+                  "label": "In",
+                  "tags": "multiplexor",
+                  "input_registers": "xi_l,offset,rot",
+                  "controlled_by": "succ_p"
+                },
+                {
+                  "id": "routine5",
+                  "type": "routine",
+                  "name": "prep_l",
+                  "label": "prep_\\ell",
+                  "input_registers": "succ_p,p",
+                  "style": {
+                    "box_el": {
+                      "text_direction": "up"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gate",
+              "type": "gate",
+              "gate_type": "hadamard",
+              "input_registers": "0",
+              "style": {
+                "expanded": false
+              }
+            }
+          ]
+        },
+        {
+          "id": "routine6",
+          "type": "routine",
+          "name": "+",
+          "label": "+",
+          "input_registers": "p",
+          "controlled_by": "offset",
+          "tags": "cyan"
+        },
+        {
+          "id": "routine39",
+          "type": "routine",
+          "name": "qrom†",
+          "label": "qrom",
+          "tags": "vertical.column,blue",
+          "input_registers": "p,rotations",
+          "style": {
+            "expanded": false
+          },
+          "children": [
+            {
+              "id": "routine40",
+              "type": "routine",
+              "name": "in_p",
+              "label": "In_p",
+              "tags": "multiplexor",
+              "input_registers": "p",
+              "controlled_by": "rotations"
+            },
+            {
+              "id": "routine41",
+              "type": "routine",
+              "name": "data_p",
+              "label": "data_p",
+              "input_registers": "rotations"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SELECT",
+      "type": "routine",
+      "name": "SELECT",
+      "label": "\\text{SELECT}",
+      "tags": "vertical,collapse-text-vertical,expand-text-above,green",
+      "input_registers": "succ_l,l,l_not_0,xi_l,offset,rot,succ_p,p,rotations,0,psi_up,psi_down",
+      "style": {
+        "expanded": false
+      },
+      "expanded": false,
+      "children": [
+        {
+          "id": "gate2",
+          "type": "gate",
+          "gate_type": "swap",
+          "input_registers": "psi_down,psi_up",
+          "controlled_by": "0",
+          "style": {
+            "expanded": false
+          }
+        },
+        {
+          "id": "gate3",
+          "type": "gate",
+          "gate_type": "r",
+          "input_registers": "psi_down",
+          "controlled_by": "rotations",
+          "style": {
+            "expanded": false
+          }
+        },
+        {
+          "id": "routine10",
+          "type": "routine",
+          "label": "Z_1",
+          "input_registers": "psi_down",
+          "controlled_by": "succ_l,succ_p"
+        },
+        {
+          "id": "gate4",
+          "type": "gate",
+          "gate_type": "r",
+          "input_registers": "psi_down",
+          "controlled_by": "rotations",
+          "style": {
+            "expanded": false
+          }
+        },
+        {
+          "id": "gate5",
+          "type": "gate",
+          "gate_type": "swap",
+          "input_registers": "psi_down,psi_up",
+          "controlled_by": "0",
+          "style": {
+            "expanded": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "PREPARE†",
+      "type": "routine",
+      "name": "PREPARE†",
+      "label": "\\text{PREPARE†}",
+      "tags": "vertical,collapse-text-vertical,expand-text-above,cyan",
+      "input_registers": "succ_l,l,l_not_0,xi_l,offset,rot,succ_p,p,rotations",
+      "style": {
+        "expanded": false
+      },
+      "expanded": false,
+      "children": [
+        {
+          "id": "routine11",
+          "type": "routine",
+          "name": "qrom†",
+          "label": "qrom†",
+          "tags": "vertical.column,blue",
+          "input_registers": "p,rotations",
+          "style": {
+            "expanded": false
+          },
+          "children": [
+            {
+              "id": "routine12",
+              "type": "routine",
+              "name": "in_p",
+              "label": "In_p",
+              "tags": "multiplexor",
+              "input_registers": "p",
+              "controlled_by": "rotations"
+            },
+            {
+              "id": "routine13",
+              "type": "routine",
+              "name": "data_p",
+              "label": "data_p",
+              "input_registers": "rotations"
+            }
+          ]
+        },
+        {
+          "id": "routine14",
+          "type": "routine",
+          "name": "+†",
+          "label": "+\\dagger",
+          "input_registers": "p",
+          "controlled_by": "offset",
+          "tags": "cyan"
+        },
+        {
+          "id": "routine15",
+          "type": "routine",
+          "name": "prep_l_†",
+          "tags": "vertical.column,purple",
+          "label": "prep_\\ell\\dagger",
+          "input_registers": "xi_l,offset,rot,succ_p,p",
+          "style": {
+            "expanded": false
+          },
+          "children": [
+            {
+              "id": "routine16",
+              "type": "routine",
+              "name": "in",
+              "label": "In",
+              "tags": "multiplexor",
+              "input_registers": "xi_l,offset,rot",
+              "controlled_by": "succ_p"
+            },
+            {
+              "id": "routine17",
+              "type": "routine",
+              "name": "prep_l_dagger",
+              "label": "prep_\\ell^\\dagger",
+              "input_registers": "succ_p,p",
+              "style": {
+                "box_el": {
+                  "text_direction": "up"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "REFLECT",
+      "type": "routine",
+      "name": "REFLECT",
+      "label": "\\text{REFLECT}",
+      "tags": "vertical,collapse-text-vertical,expand-text-above,pink",
+      "input_registers": "succ_l,l,l_not_0,xi_l,offset,rot,succ_p,p,rotations,0",
+      "style": {
+        "expanded": false
+      },
+      "expanded": false,
+      "children": [
+        {
+          "id": "gate6",
+          "type": "gate",
+          "gate_type": "hadamard",
+          "input_registers": "0",
+          "style": {
+            "expanded": false
+          }
+        },
+        {
+          "id": "routine18",
+          "type": "routine",
+          "controlled_by": "succ_l,l_not_0,!p,!0"
+        },
+        {
+          "id": "gate7",
+          "type": "gate",
+          "gate_type": "hadamard",
+          "input_registers": "0",
+          "style": {
+            "expanded": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "PREPARE_2",
+      "type": "routine",
+      "name": "PREPARE_2",
+      "label": "\\text{PREPARE}",
+      "tags": "vertical,collapse-text-vertical,expand-text-above,cyan",
+      "input_registers": "succ_l,l,l_not_0,xi_l,offset,rot,succ_p,p,rotations",
+      "style": {
+        "expanded": false
+      },
+      "expanded": false,
+      "children": [
+        {
+          "id": "routine19",
+          "type": "routine",
+          "name": "prep_l",
+          "tags": "vertical.column,purple",
+          "label": "prep_\\ell",
+          "input_registers": "xi_l,offset,rot,succ_p,p",
+          "style": {
+            "expanded": false
+          },
+          "children": [
+            {
+              "id": "routine20",
+              "type": "routine",
+              "name": "in",
+              "label": "In",
+              "tags": "multiplexor",
+              "input_registers": "xi_l,offset,rot",
+              "controlled_by": "succ_p"
+            },
+            {
+              "id": "routine21",
+              "type": "routine",
+              "name": "prep_l",
+              "label": "prep_\\ell",
+              "input_registers": "succ_p,p",
+              "style": {
+                "box_el": {
+                  "text_direction": "up"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "routine22",
+          "type": "routine",
+          "name": "+",
+          "label": "+",
+          "input_registers": "p",
+          "controlled_by": "offset",
+          "tags": "cyan"
+        },
+        {
+          "id": "routine23",
+          "type": "routine",
+          "name": "qrom",
+          "label": "qrom",
+          "tags": "vertical.column,blue",
+          "input_registers": "p,rotations",
+          "style": {
+            "expanded": false
+          },
+          "children": [
+            {
+              "id": "routine24",
+              "type": "routine",
+              "name": "in_p",
+              "label": "In_p",
+              "tags": "multiplexor",
+              "input_registers": "p",
+              "controlled_by": "rotations"
+            },
+            {
+              "id": "routine25",
+              "type": "routine",
+              "name": "data_p",
+              "label": "data_p",
+              "input_registers": "rotations"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SELECT_2",
+      "type": "routine",
+      "name": "SELECT_2",
+      "label": "\\text{SELECT}",
+      "tags": "vertical,collapse-text-vertical,expand-text-above,green",
+      "input_registers": "succ_l,l,l_not_0,xi_l,offset,rot,succ_p,p,rotations,0,psi_up,psi_down",
+      "style": {
+        "expanded": false
+      },
+      "children": [
+        {
+          "id": "gate8",
+          "type": "gate",
+          "gate_type": "swap",
+          "input_registers": "psi_down,psi_up",
+          "controlled_by": "0",
+          "style": {
+            "expanded": false
+          }
+        },
+        {
+          "id": "gate9",
+          "type": "gate",
+          "gate_type": "r",
+          "input_registers": "psi_down",
+          "controlled_by": "rotations",
+          "style": {
+            "expanded": false
+          }
+        },
+        {
+          "id": "routine26",
+          "type": "routine",
+          "name": "z1",
+          "label": "Z_1",
+          "input_registers": "psi_down",
+          "controlled_by": "l_not_0,succ_l,succ_p"
+        },
+        {
+          "id": "gate10",
+          "type": "gate",
+          "gate_type": "r",
+          "input_registers": "psi_down",
+          "controlled_by": "rotations",
+          "style": {
+            "expanded": false
+          }
+        },
+        {
+          "id": "gate11",
+          "type": "gate",
+          "gate_type": "swap",
+          "input_registers": "psi_down,psi_up",
+          "controlled_by": "0",
+          "style": {
+            "expanded": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "routine27",
+      "type": "routine",
+      "name": "PREPARE†_2",
+      "tags": "vertical,collapse-text-vertical,expand-text-above,cyan",
+      "label": "\\text{PREPARE†}",
+      "input_registers": "succ_l,l,l_not_0,xi_l,offset,rot,succ_p,p,rotations,0",
+      "style": {
+        "expanded": false
+      },
+      "expanded": true,
+      "children": [
+        {
+          "id": "routine28",
+          "type": "routine",
+          "name": "qrom†",
+          "label": "qrom†",
+          "tags": "vertical.column,blue",
+          "input_registers": "p,rotations",
+          "style": {
+            "expanded": false
+          },
+          "children": [
+            {
+              "id": "routine29",
+              "type": "routine",
+              "name": "in_p",
+              "label": "In_p",
+              "tags": "multiplexor",
+              "input_registers": "p",
+              "controlled_by": "rotations"
+            },
+            {
+              "id": "routine30",
+              "type": "routine",
+              "name": "data_p",
+              "label": "data_p",
+              "input_registers": "rotations"
+            }
+          ]
+        },
+        {
+          "id": "routine31",
+          "type": "routine",
+          "name": "+",
+          "label": "+\\dagger",
+          "input_registers": "p",
+          "controlled_by": "offset",
+          "tags": "cyan"
+        },
+        {
+          "id": "column2",
+          "type": "column",
+          "style": {
+            "expanded": false
+          },
+          "input_registers": "*",
+          "children": [
+            {
+              "id": "routine32",
+              "type": "routine",
+              "name": "prep†",
+              "tags": "vertical.column,purple",
+              "label": "prep_\\ell\\dagger",
+              "input_registers": "xi_l,offset,rot,succ_p,p",
+              "style": {
+                "expanded": false
+              },
+              "children": [
+                {
+                  "id": "routine33",
+                  "type": "routine",
+                  "name": "in",
+                  "label": "In",
+                  "tags": "multiplexor",
+                  "input_registers": "xi_l,offset,rot",
+                  "controlled_by": "succ_p"
+                },
+                {
+                  "id": "routine34",
+                  "type": "routine",
+                  "name": "prep_l_dagger",
+                  "label": "prep_\\ell^\\dagger",
+                  "input_registers": "succ_p,p",
+                  "style": {
+                    "box_el": {
+                      "text_direction": "up"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gate12",
+              "type": "gate",
+              "gate_type": "hadamard",
+              "input_registers": "0",
+              "style": {
+                "expanded": false
+              }
+            }
+          ]
+        },
+        {
+          "id": "routine35",
+          "type": "routine",
+          "name": "qrom†_2",
+          "label": "qrom†",
+          "tags": "vertical.column,blue",
+          "input_registers": "l,l_not_0,xi_l,offset,rot",
+          "style": {
+            "expanded": false
+          },
+          "children": [
+            {
+              "id": "routine36",
+              "type": "routine",
+              "name": "in_l",
+              "label": "In_\\ell",
+              "tags": "multiplexor",
+              "input_registers": "l",
+              "controlled_by": "l_not_0"
+            },
+            {
+              "id": "routine37",
+              "type": "routine",
+              "name": "data_l",
+              "label": "data_\\ell",
+              "input_registers": "l_not_0,xi_l,offset,rot",
+              "style": {
+                "box_el": {
+                  "text_direction": "up"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "routine38",
+          "type": "routine",
+          "name": "prep†",
+          "label": "prep†",
+          "input_registers": "succ_l,l",
+          "style": {
+            "box_el": {
+              "text_direction": "up"
+            }
+          },
+          "tags": "purple"
+        }
+      ]
+    }
+  ],
+  "copyright": "Lee, Joonho, et al. \"Even more efficient quantum computations of chemistry through tensor hypercontraction.\" PRX quantum 2.3 (2021): 030305.",
+  "record_format": 2,
+  "modified": "2026-01-20T18:51:49.287Z"
+}

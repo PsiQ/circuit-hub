@@ -1,0 +1,78 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "Bell State Pairs",
+  "copyright": "Copyright (c) 2026.  All rights reserved.",
+  "operations": [
+    {
+      "type": "register",
+      "id": "r1",
+      "label": "\\ket{a}",
+      "style": {
+        "enumerate": "custom"
+      },
+      "rail_names": "1,2...n"
+    },
+    {
+      "type": "register",
+      "id": "r2",
+      "label": "\\ket{b}",
+      "style": {
+        "enumerate": "custom"
+      },
+      "rail_names": "1,2...n"
+    },
+    {
+      "name": "routine",
+      "label": "\\text{Bell Pairs}",
+      "input_registers": "r2",
+      "type": "routine",
+      "id": "routine1",
+      "expanded": true,
+      "tags": "purple",
+      "children": [
+        {
+          "input_registers": "r1",
+          "gate_type": "hadamard",
+          "type": "gate",
+          "id": "gate1"
+        },
+        {
+          "input_registers": "r2[0]",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate2",
+          "controlled_by": "r1[0]"
+        },
+        {
+          "input_registers": "r2[1]",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate3",
+          "controlled_by": "r1[1]"
+        },
+        {
+          "input_registers": "*",
+          "tags": "ellipsis",
+          "type": "separator",
+          "id": "separator1"
+        },
+        {
+          "input_registers": "r2[3]",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate4",
+          "controlled_by": "r1[3]"
+        }
+      ]
+    },
+    {
+      "type": "label",
+      "label_type": "register-end",
+      "label": "\\lvert\\Psi\\rangle = \\bigotimes_{i=1}^n \\frac{1}{\\sqrt{2}} (\\lvert 00 \\rangle + \\lvert 11 \\rangle)_i",
+      "input_registers": "*",
+      "id": "label1"
+    }
+  ],
+  "record_format": 2,
+  "modified": "2026-01-22T22:29:58.262Z"
+}

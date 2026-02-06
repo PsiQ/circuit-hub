@@ -1,0 +1,337 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "Alias Sampling",
+  "locked": true,
+  "style": {
+    "registers": {
+      "register": {
+        "expanded": true,
+        "enumerate": "decimal"
+      }
+    },
+    "operations": {
+      "routine": {
+        "expanded": true
+      }
+    }
+  },
+  "operations": [
+    {
+      "id": "prep",
+      "type": "register",
+      "label": "\\text{prep}",
+      "size": 2,
+      "style": {
+        "show_rail_labels": false,
+        "expanded": true,
+        "collapsed_marker_el": {
+          "visible": true
+        }
+      },
+      "expanded": true
+    },
+    {
+      "id": "clean",
+      "type": "register",
+      "label": "\\text{clean}",
+      "size": 2,
+      "style": {
+        "show_rail_labels": true,
+        "expanded": true,
+        "collapsed_marker_el": {
+          "visible": true
+        }
+      },
+      "expanded": true
+    },
+    {
+      "id": "compare",
+      "type": "register",
+      "label": "\\text{compare}",
+      "size": 1,
+      "style": {
+        "expanded": false,
+        "show_rail_labels": false
+      },
+      "expanded": true
+    },
+    {
+      "id": "coin_toss",
+      "type": "register",
+      "label": "\\text{coin toss}",
+      "size": 2,
+      "style": {
+        "expanded": false,
+        "collapsed_marker_el": {
+          "visible": true
+        }
+      },
+      "expanded": true
+    },
+    {
+      "id": "prep2",
+      "type": "routine",
+      "name": "prep",
+      "label": "\\textbf{Prep}",
+      "input_registers": "prep",
+      "tags": [
+        "red",
+        "border-red",
+        "expand-text-above"
+      ],
+      "style": {
+        "expanded": false,
+        "box_el": {
+          "stroke": {
+            "border_style": "thin"
+          }
+        }
+      },
+      "expanded": false,
+      "children": [
+        {
+          "id": "gate",
+          "type": "gate",
+          "gate_type": "hadamard",
+          "input_registers": "prep[*]"
+        }
+      ]
+    },
+    {
+      "id": "qrom",
+      "type": "routine",
+      "name": "qrom",
+      "label": "\\textbf{QROM}",
+      "input_registers": "prep,clean[0],clean[1]",
+      "tags": [
+        "orange",
+        "border-orange",
+        "expand-text-above"
+      ],
+      "style": {
+        "expanded": false
+      },
+      "expanded": false,
+      "children": [
+        {
+          "id": "gate2",
+          "type": "gate",
+          "gate_type": "cnot",
+          "control_type": "control.multiplexor",
+          "input_registers": "clean[0]",
+          "controlled_by": "prep[0],!prep[1]"
+        },
+        {
+          "id": "gate3",
+          "type": "gate",
+          "gate_type": "cnot",
+          "control_type": "control.multiplexor",
+          "input_registers": "clean[0]",
+          "controlled_by": "!prep[0],prep[1]"
+        },
+        {
+          "id": "gate4",
+          "type": "gate",
+          "gate_type": "cnot",
+          "control_type": "control.multiplexor",
+          "input_registers": "clean[0],clean[1]",
+          "controlled_by": "prep[0],prep[1]"
+        }
+      ]
+    },
+    {
+      "id": "sampling",
+      "type": "routine",
+      "name": "sampling",
+      "label": "\\textbf{Sampling}",
+      "input_registers": "prep,clean,compare,coin_toss,qbk_anc",
+      "tags": [
+        "purple",
+        "border-purple",
+        "expand-text-above"
+      ],
+      "style": {
+        "box_el": {
+          "border": "1 dashed"
+        },
+        "expanded": false
+      },
+      "expanded": true,
+      "children": [
+        {
+          "id": "column",
+          "type": "column",
+          "input_registers": "*",
+          "children": [
+            {
+              "id": "qbk_anc",
+              "type": "register",
+              "label": "\\text{qbk anc}",
+              "size": 2,
+              "style": {
+                "rail_state": "free",
+                "show_register_label": false,
+                "show_rail_labels": false,
+                "expanded": true,
+                "collapsed_marker_el": {
+                  "visible": false
+                },
+                "margin": "t: 20, l: 5, b: 10, r: 5"
+              },
+              "expanded": true
+            },
+            {
+              "id": "coin_toss2",
+              "type": "routine",
+              "name": "coin_toss",
+              "label": "\\text{Coin Toss}",
+              "input_registers": "coin_toss",
+              "style": {
+                "expanded": true
+              },
+              "expanded": false,
+              "children": [
+                {
+                  "id": "gate5",
+                  "type": "gate",
+                  "gate_type": "hadamard",
+                  "input_registers": "coin_toss[*]"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "compare2",
+          "type": "routine",
+          "name": "compare",
+          "label": "\\text{Compare}",
+          "input_registers": "clean,coin_toss,compare,qbk_anc",
+          "tags": [
+            "expand-text-above"
+          ],
+          "style": {
+            "expanded": true
+          },
+          "expanded": false,
+          "children": [
+            {
+              "id": "gate6",
+              "type": "gate",
+              "gate_type": "lelbow",
+              "input_registers": "qbk_anc[0]",
+              "controlled_by": "clean[0],!coin_toss[0]"
+            },
+            {
+              "id": "gate7",
+              "type": "gate",
+              "gate_type": "cnot",
+              "input_registers": "clean[1],coin_toss[1]",
+              "controlled_by": "qbk_anc[0]"
+            },
+            {
+              "id": "gate8",
+              "type": "gate",
+              "gate_type": "lelbow",
+              "input_registers": "qbk_anc[1]",
+              "controlled_by": "clean[1],!coin_toss[1]"
+            },
+            {
+              "id": "gate9",
+              "type": "gate",
+              "gate_type": "cnot",
+              "input_registers": "qbk_anc[1]",
+              "controlled_by": "qbk_anc[0]"
+            }
+          ]
+        },
+        {
+          "id": "gate10",
+          "type": "gate",
+          "gate_type": "cnot",
+          "input_registers": "compare",
+          "controlled_by": "qbk_anc[1]"
+        },
+        {
+          "id": "compare†",
+          "type": "routine",
+          "name": "compare†",
+          "label": "\\text{Compare}\\dagger",
+          "input_registers": "clean,coin_toss,qbk_anc,compare",
+          "tags": [
+            "expand-text-above"
+          ],
+          "style": {
+            "expanded": true
+          },
+          "expanded": false,
+          "children": [
+            {
+              "id": "gate11",
+              "type": "gate",
+              "gate_type": "cnot",
+              "input_registers": "qbk_anc[1]",
+              "controlled_by": "qbk_anc[0]"
+            },
+            {
+              "id": "gate12",
+              "type": "gate",
+              "gate_type": "relbow",
+              "input_registers": "qbk_anc[1]",
+              "controlled_by": "clean[1],!coin_toss[1]"
+            },
+            {
+              "id": "gate13",
+              "type": "gate",
+              "gate_type": "cnot",
+              "input_registers": "clean[1],coin_toss[1]",
+              "controlled_by": "qbk_anc[0]"
+            },
+            {
+              "id": "gate14",
+              "type": "gate",
+              "gate_type": "relbow",
+              "input_registers": "qbk_anc[0]",
+              "controlled_by": "clean[0],!coin_toss[0]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "swap_up",
+      "type": "routine",
+      "name": "swap up",
+      "label": "\\textbf{Swap Up}",
+      "input_registers": "prep,clean,compare",
+      "tags": [
+        "red",
+        "border-red",
+        "expand-text-above"
+      ],
+      "style": {
+        "expanded": false
+      },
+      "expanded": false,
+      "children": [
+        {
+          "id": "gate15",
+          "type": "gate",
+          "gate_type": "swap",
+          "input_registers": "prep[0],clean[0]",
+          "controlled_by": "compare"
+        },
+        {
+          "id": "gate16",
+          "type": "gate",
+          "gate_type": "swap",
+          "input_registers": "prep[1],clean[1]",
+          "controlled_by": "compare"
+        }
+      ]
+    }
+  ],
+  "copyright": "Babbush, Ryan, et al. “Encoding Electronic Spectra in Quantum Circuits with Linear T Complexity.” Physical Review X, vol. 8, no. 4, 23 Oct. 2018",
+  "record_format": 2,
+  "modified": "2026-01-20T18:58:30.146Z"
+}

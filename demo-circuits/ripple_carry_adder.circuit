@@ -1,0 +1,380 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "Ripple Carry Adder",
+  "copyright": "Cuccaro, S.A., Draper, T.G., Kutin, S., & Moulton, D.P. (2004). A new quantum ripple-carry addition circuit. arXiv: Quantum Physics.",
+  "operations": [
+    {
+      "type": "register",
+      "id": "cin",
+      "label": "c_{in}"
+    },
+    {
+      "type": "register",
+      "id": "b0",
+      "label": "b_{0}"
+    },
+    {
+      "type": "register",
+      "id": "a0",
+      "label": "a_{0}"
+    },
+    {
+      "type": "register",
+      "id": "b1",
+      "label": "b_{1}"
+    },
+    {
+      "type": "register",
+      "id": "a1",
+      "label": "a_{1}"
+    },
+    {
+      "type": "register",
+      "id": "b2",
+      "label": "b_{2}"
+    },
+    {
+      "type": "register",
+      "id": "a2",
+      "label": "a_{2}"
+    },
+    {
+      "type": "register",
+      "id": "z",
+      "label": "c_{out}"
+    },
+    {
+      "name": "routine",
+      "label": "MAJ",
+      "input_registers": "cin,a0,b0",
+      "type": "routine",
+      "id": "routine1",
+      "expanded": false,
+      "tags": "blue",
+      "children": [
+        {
+          "input_registers": "b0",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate2",
+          "controlled_by": "a0"
+        },
+        {
+          "input_registers": "cin",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate3",
+          "controlled_by": "a0"
+        },
+        {
+          "input_registers": "a0",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate4",
+          "controlled_by": "cin,b0"
+        }
+      ]
+    },
+    {
+      "name": "routine",
+      "label": "MAJ",
+      "input_registers": "a0,b1,a1",
+      "type": "routine",
+      "id": "routine2",
+      "expanded": false,
+      "tags": "blue",
+      "children": [
+        {
+          "input_registers": "b1",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate5",
+          "controlled_by": "a1"
+        },
+        {
+          "input_registers": "a0",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate6",
+          "controlled_by": "a1"
+        },
+        {
+          "input_registers": "a1",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate7",
+          "controlled_by": "a0,b1"
+        }
+      ]
+    },
+    {
+      "name": "routine",
+      "label": "MAJ",
+      "input_registers": "a1,b2,a2",
+      "type": "routine",
+      "id": "routine3",
+      "expanded": true,
+      "tags": "blue",
+      "children": [
+        {
+          "input_registers": "b2",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate8",
+          "controlled_by": "a2"
+        },
+        {
+          "input_registers": "a1",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate9",
+          "controlled_by": "a2"
+        },
+        {
+          "input_registers": "a2",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate10",
+          "controlled_by": "a1,b2"
+        }
+      ]
+    },
+    {
+      "input_registers": "z",
+      "gate_type": "cnot",
+      "type": "gate",
+      "id": "gate1",
+      "controlled_by": "a2"
+    },
+    {
+      "name": "routine",
+      "label": "UMA",
+      "input_registers": "a1,b2,a2",
+      "type": "routine",
+      "id": "routine4",
+      "expanded": true,
+      "tags": "orange",
+      "children": [
+        {
+          "input_registers": "a2",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate12",
+          "controlled_by": "a1,b2"
+        },
+        {
+          "input_registers": "a1",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate13",
+          "controlled_by": "a2"
+        },
+        {
+          "input_registers": "b2",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate14",
+          "controlled_by": "a1"
+        }
+      ]
+    },
+    {
+      "name": "routine",
+      "label": "UMA",
+      "input_registers": "a0,b1,a1",
+      "type": "routine",
+      "id": "routine5",
+      "expanded": false,
+      "tags": "orange",
+      "children": [
+        {
+          "input_registers": "a1",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate15",
+          "controlled_by": "a0,b1"
+        },
+        {
+          "input_registers": "a0",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate16",
+          "controlled_by": "a1"
+        },
+        {
+          "input_registers": "b1",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate17",
+          "controlled_by": "a0"
+        }
+      ]
+    },
+    {
+      "name": "routine",
+      "label": "UMA",
+      "input_registers": "cin,b0,a0",
+      "type": "routine",
+      "id": "routine6",
+      "expanded": false,
+      "tags": "orange",
+      "children": [
+        {
+          "input_registers": "a0",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate18",
+          "controlled_by": "cin,b0"
+        },
+        {
+          "input_registers": "cin",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate19",
+          "controlled_by": "a0"
+        },
+        {
+          "input_registers": "b0",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate20",
+          "controlled_by": "cin"
+        }
+      ]
+    },
+    {
+      "input_registers": "*",
+      "tags": "spacer",
+      "type": "separator",
+      "id": "separator1",
+      "style": {
+        "width": 20
+      }
+    },
+    {
+      "type": "label",
+      "label_type": "rail",
+      "label": "|0\\rangle",
+      "input_registers": "cin",
+      "id": "label1",
+      "style": {
+        "box_el": {
+          "text_align": "middle",
+          "padding": "t: 8, l: 5, b: 0, r: 5"
+        },
+        "rail_state": "free",
+        "align_self": "start"
+      }
+    },
+    {
+      "type": "label",
+      "label_type": "rail",
+      "label": "s_0",
+      "input_registers": "b0",
+      "id": "label2",
+      "style": {
+        "box_el": {
+          "text_align": "middle",
+          "padding": "t: 8, l: 5, b: 0, r: 5"
+        },
+        "rail_state": "free",
+        "align_self": "start"
+      }
+    },
+    {
+      "type": "label",
+      "label_type": "rail",
+      "label": "a_0",
+      "input_registers": "a0",
+      "id": "label5",
+      "style": {
+        "box_el": {
+          "text_align": "middle",
+          "padding": "t: 8, l: 5, b: 0, r: 5"
+        },
+        "rail_state": "free",
+        "align_self": "start"
+      }
+    },
+    {
+      "type": "label",
+      "label_type": "rail",
+      "label": "a_1",
+      "input_registers": "a1",
+      "id": "label6",
+      "style": {
+        "box_el": {
+          "text_align": "middle",
+          "padding": "t: 8, l: 5, b: 0, r: 5"
+        },
+        "rail_state": "free",
+        "align_self": "start"
+      }
+    },
+    {
+      "type": "label",
+      "label_type": "rail",
+      "label": "a_2",
+      "input_registers": "a2",
+      "id": "label7",
+      "style": {
+        "box_el": {
+          "text_align": "middle",
+          "padding": "t: 8, l: 5, b: 0, r: 5"
+        },
+        "rail_state": "free",
+        "align_self": "start"
+      }
+    },
+    {
+      "type": "label",
+      "label_type": "rail",
+      "label": "z \\oplus s_3",
+      "input_registers": "z",
+      "id": "label8",
+      "style": {
+        "box_el": {
+          "text_align": "middle",
+          "padding": "t: 8, l: 5, b: 0, r: 5"
+        },
+        "rail_state": "free",
+        "align_self": "start"
+      }
+    },
+    {
+      "type": "label",
+      "label_type": "rail",
+      "label": "s_1",
+      "input_registers": "b1",
+      "id": "label3",
+      "style": {
+        "box_el": {
+          "text_align": "middle",
+          "padding": "t: 8, l: 5, b: 0, r: 5"
+        },
+        "rail_state": "free",
+        "align_self": "start"
+      }
+    },
+    {
+      "type": "label",
+      "label_type": "rail",
+      "label": "s_2",
+      "input_registers": "b2",
+      "id": "label4",
+      "style": {
+        "box_el": {
+          "text_align": "middle",
+          "padding": "t: 8, l: 5, b: 0, r: 5"
+        },
+        "rail_state": "free",
+        "align_self": "start"
+      }
+    }
+  ],
+  "record_format": 2,
+  "modified": "2026-02-06T18:19:48.456Z",
+  "style": {
+    "show_rail_allocation": false
+  }
+}

@@ -1,0 +1,1444 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "Double Factorization Tensor Hypercontraction (DF-THC)",
+  "copyright": "Low, Guang Hao, et al. “Fast Quantum Simulation of Electronic Structure by Spectral Amplification.” Physical Review X, vol. 15, no. 4, 31 Oct. 2025",
+  "operations": [
+    {
+      "id": "r1",
+      "type": "register",
+      "label": "\\text{superindex }(x_0)",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r2",
+      "type": "register",
+      "label": "\\text{alias sampling succ flag}",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r3",
+      "type": "register",
+      "label": "\\text{bases }(b)",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r4",
+      "type": "register",
+      "label": "\\text{USP succ flag}",
+      "style": {
+        "rail_state": "allocated",
+        "collapsed_marker_el": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "id": "r22",
+      "type": "register",
+      "label": "\\text{ctrl anc}\n",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r20",
+      "type": "register",
+      "label": "\\text{joint succ flag}",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r5",
+      "type": "register",
+      "label": "\\text{SOS flag }(G_0)",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r6",
+      "type": "register",
+      "label": "\\text{SOS flag }(G_1)",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r7",
+      "type": "register",
+      "label": "\\text{ranks }(r)",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r9",
+      "type": "register",
+      "label": "\\text{alt}",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r10",
+      "type": "register",
+      "label": "\\text{keep}",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r18",
+      "type": "register",
+      "label": "\\text{coin toss reg}",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r19",
+      "type": "register",
+      "label": "\\text{comparator output}",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r11",
+      "type": "register",
+      "label": "\\text{Givens rotation angles}",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r12",
+      "type": "register",
+      "label": "b=B",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r13",
+      "type": "register",
+      "label": "\\text{two electron spin flag }(|\\sigma_0\\rangle)",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r14",
+      "type": "register",
+      "label": "\\text{one electron spin flag }(|\\sigma_1\\rangle)",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r15",
+      "type": "register",
+      "label": "\\text{consolidated spin flag }(|\\sigma\\rangle)",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r16",
+      "type": "register",
+      "label": "|\\psi_\\downarrow\\rangle",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "r17",
+      "type": "register",
+      "label": "|\\psi_\\uparrow\\rangle",
+      "style": {
+        "rail_state": "allocated"
+      }
+    },
+    {
+      "id": "routine",
+      "type": "routine",
+      "name": "routine",
+      "label": "\\text{outer prep}",
+      "input_registers": "r1,r2,r13",
+      "tags": [
+        "red"
+      ],
+      "style": {
+        "expanded": true
+      },
+      "expanded": false,
+      "children": [
+        {
+          "id": "column",
+          "type": "column",
+          "input_registers": "*",
+          "children": [
+            {
+              "id": "gate",
+              "type": "gate",
+              "gate_type": "hadamard",
+              "input_registers": "r13"
+            },
+            {
+              "id": "routine2",
+              "type": "routine",
+              "name": "routine",
+              "input_registers": "r1,r2",
+              "label": "\\text{prep}",
+              "tags": [
+                "collapse-text-vertical"
+              ],
+              "style": {
+                "rail_state": "in_use"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "routine63",
+      "type": "routine",
+      "name": "routine",
+      "input_registers": "r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15,r16,r17,r18,r19,r20,r22",
+      "label": "\\text{outer SELECT}",
+      "tags": [
+        "gray"
+      ],
+      "style": {
+        "expanded": true
+      },
+      "expanded": true,
+      "children": [
+        {
+          "id": "routine3",
+          "type": "routine",
+          "name": "routine",
+          "label": "\\text{inner prep}",
+          "input_registers": "r1,r3,r4,r5,r6,r7,r8,r9,r10,r14,r18,r19",
+          "tags": [
+            "pink"
+          ],
+          "style": {
+            "expanded": true
+          },
+          "expanded": false,
+          "children": [
+            {
+              "id": "routine31",
+              "type": "routine",
+              "name": "routine",
+              "input_registers": "r3,r4",
+              "label": "\\text{USP}",
+              "style": {
+                "rail_state": "in_use"
+              }
+            },
+            {
+              "id": "column2",
+              "type": "column",
+              "input_registers": "*",
+              "style": {
+                "expanded": true
+              },
+              "children": [
+                {
+                  "id": "routine5",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r9,r10",
+                  "label": "\\text{data}_{x_0, b}",
+                  "controlled_by": "r3,r1",
+                  "style": {
+                    "rail_state": "in_use"
+                  }
+                },
+                {
+                  "id": "routine4",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r5,r6,r7,r8",
+                  "label": "\\text{data}_{x_0}[:-N]",
+                  "tags": [
+                    "collapse-text-vertical"
+                  ],
+                  "controlled_by": "r1",
+                  "style": {
+                    "rail_state": "in_use"
+                  }
+                },
+                {
+                  "id": "routine6",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r1",
+                  "label": "\\text{In}_{x_0}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                },
+                {
+                  "id": "routine7",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r3",
+                  "label": "\\text{In}_{b}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                },
+                {
+                  "id": "gate3",
+                  "type": "gate",
+                  "gate_type": "hadamard",
+                  "input_registers": "r18"
+                },
+                {
+                  "id": "gate2",
+                  "type": "gate",
+                  "gate_type": "hadamard",
+                  "input_registers": "r14"
+                }
+              ]
+            },
+            {
+              "id": "column3",
+              "type": "column",
+              "input_registers": "*",
+              "style": {
+                "expanded": true
+              },
+              "children": [
+                {
+                  "id": "routine8",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r19",
+                  "label": "\\oplus(\\text{keep}_{x_0,b}\\leq\\text{coin})",
+                  "controlled_by": "r10,r19",
+                  "style": {
+                    "rail_state": "in_use"
+                  }
+                },
+                {
+                  "id": "routine10",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r18",
+                  "label": "\\text{In}_{\\text{coin}}"
+                },
+                {
+                  "id": "routine9",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r10\n",
+                  "label": "\\text{In}_{\\text{keep}_{x_0,b}}"
+                }
+              ]
+            },
+            {
+              "id": "gate4",
+              "type": "gate",
+              "gate_type": "swap",
+              "input_registers": "r9,r3\n",
+              "controlled_by": "r19"
+            }
+          ]
+        },
+        {
+          "id": "routine11",
+          "type": "routine",
+          "name": "routine",
+          "input_registers": "r11,r12,r3,r7,r15,r16,r17,r20,r14,r13,r2,r4,r5,r6,r22,r1",
+          "label": "\\text{inner\n SELECT}",
+          "tags": [
+            "tan"
+          ],
+          "style": {
+            "expanded": true
+          },
+          "expanded": false,
+          "children": [
+            {
+              "id": "column19",
+              "type": "column",
+              "input_registers": "*",
+              "style": {
+                "expanded": true
+              },
+              "children": [
+                {
+                  "id": "routine70",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r11",
+                  "label": "\\text{data}_{x_0}[-N:]",
+                  "controlled_by": "r1",
+                  "style": {
+                    "rail_state": "in_use"
+                  }
+                },
+                {
+                  "id": "routine66",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r5,r6,r7,r8",
+                  "label": "\\text{data}_{x_0}[-N:]",
+                  "tags": [
+                    "collapse-text-vertical"
+                  ],
+                  "controlled_by": "r1",
+                  "style": {
+                    "rail_state": "in_use"
+                  }
+                },
+                {
+                  "id": "routine67",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r1",
+                  "label": "\\text{In}_{x_0}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "column4",
+              "type": "column",
+              "input_registers": "*",
+              "children": [
+                {
+                  "id": "routine12",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r11,r12",
+                  "controlled_by": "r3",
+                  "label": "\\text{data}_{r,b}",
+                  "style": {
+                    "rail_state": "in_use"
+                  }
+                },
+                {
+                  "id": "routine13",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r3",
+                  "label": "\\text{In}_b",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                },
+                {
+                  "id": "routine14",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r7",
+                  "label": "\\text{In}_r",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gate5",
+              "type": "gate",
+              "gate_type": "lelbow",
+              "input_registers": "r15",
+              "controlled_by": "r13,~r5"
+            },
+            {
+              "id": "gate6",
+              "type": "gate",
+              "gate_type": "cnot",
+              "input_registers": "r15",
+              "controlled_by": "r14,r5"
+            },
+            {
+              "id": "gate7",
+              "type": "gate",
+              "gate_type": "swap",
+              "input_registers": "r16,r17",
+              "controlled_by": "r15"
+            },
+            {
+              "id": "column5",
+              "type": "column",
+              "input_registers": "*",
+              "children": [
+                {
+                  "id": "routine15",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r16",
+                  "label": "R_{\\text{Givens}}",
+                  "controlled_by": "r11"
+                },
+                {
+                  "id": "routine16",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r11\n",
+                  "label": "\\text{In}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "routine17",
+              "type": "routine",
+              "name": "routine",
+              "input_registers": "r16,r5,r6,r12,r15,r2,r4,r22,r20\n",
+              "label": "\\text{Maj}",
+              "tags": [
+                "green"
+              ],
+              "style": {
+                "expanded": true
+              },
+              "expanded": false,
+              "children": [
+                {
+                  "id": "gate49",
+                  "type": "gate",
+                  "gate_type": "lelbow",
+                  "input_registers": "r20",
+                  "controlled_by": "r2,r4"
+                },
+                {
+                  "id": "gate48",
+                  "type": "gate",
+                  "gate_type": "lelbow",
+                  "input_registers": "r22",
+                  "controlled_by": "r20,r5"
+                },
+                {
+                  "id": "gate8",
+                  "type": "gate",
+                  "gate_type": "z",
+                  "controlled_by": "r22,~r12",
+                  "input_registers": "r16,"
+                },
+                {
+                  "id": "gate46",
+                  "type": "gate",
+                  "gate_type": "cnot",
+                  "input_registers": "r22",
+                  "controlled_by": "r20"
+                },
+                {
+                  "id": "gate10",
+                  "type": "gate",
+                  "gate_type": "cnot",
+                  "input_registers": "r16\n",
+                  "controlled_by": "r22"
+                },
+                {
+                  "id": "gate11",
+                  "type": "gate",
+                  "gate_type": "z",
+                  "controlled_by": "r22,r15",
+                  "input_registers": "r16"
+                },
+                {
+                  "id": "gate47",
+                  "type": "gate",
+                  "gate_type": "relbow",
+                  "input_registers": "r22",
+                  "controlled_by": "~r5,r20"
+                },
+                {
+                  "id": "gate12",
+                  "type": "gate",
+                  "gate_type": "cnot",
+                  "controlled_by": "r6,r15,r20"
+                },
+                {
+                  "id": "gate50",
+                  "type": "gate",
+                  "gate_type": "relbow",
+                  "input_registers": "r20",
+                  "controlled_by": "r2,r4"
+                }
+              ]
+            },
+            {
+              "id": "column6",
+              "type": "column",
+              "input_registers": "*",
+              "children": [
+                {
+                  "id": "routine18",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r16",
+                  "label": "R_{\\text{Givens}}^\\dagger",
+                  "controlled_by": "r11"
+                },
+                {
+                  "id": "routine19",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r11\n",
+                  "label": "\\text{In}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gate14",
+              "type": "gate",
+              "gate_type": "swap",
+              "input_registers": "r16,r17",
+              "controlled_by": "r15",
+              "style": {
+                "rail_state": "allocated"
+              }
+            },
+            {
+              "id": "gate15",
+              "type": "gate",
+              "gate_type": "hadamard",
+              "input_registers": "r15"
+            },
+            {
+              "id": "gate16",
+              "type": "gate",
+              "gate_type": "measurement",
+              "input_registers": "r15"
+            },
+            {
+              "id": "gate17",
+              "type": "gate",
+              "gate_type": "cnot",
+              "controlled_by": "r15,r13,~r5"
+            },
+            {
+              "id": "gate18",
+              "type": "gate",
+              "gate_type": "cnot",
+              "controlled_by": "r15,r14,r5"
+            },
+            {
+              "id": "gate19",
+              "type": "gate",
+              "gate_type": "relbow",
+              "input_registers": "r15"
+            },
+            {
+              "id": "column7",
+              "type": "column",
+              "input_registers": "*",
+              "children": [
+                {
+                  "id": "routine20",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r11,r12",
+                  "controlled_by": "r3",
+                  "label": "\\text{data}_{r,b}^\\dagger",
+                  "style": {
+                    "rail_state": "free"
+                  }
+                },
+                {
+                  "id": "routine21",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r3",
+                  "label": "\\text{In}_b",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                },
+                {
+                  "id": "routine22",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r7",
+                  "label": "\\text{In}_r",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "column20",
+              "type": "column",
+              "input_registers": "*",
+              "children": [
+                {
+                  "id": "routine68",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r5,r6,r7,r8",
+                  "label": "\\text{data}_{x_0}[-N:]^\\dagger",
+                  "tags": [
+                    "collapse-text-vertical"
+                  ],
+                  "controlled_by": "r1",
+                  "style": {
+                    "rail_state": "in_use"
+                  }
+                },
+                {
+                  "id": "routine69",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r1",
+                  "label": "\\text{In}_{x_0}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "routine23",
+          "type": "routine",
+          "name": "routine",
+          "label": "\\text{inner prep}^\\dagger",
+          "input_registers": "r1,r3,r4,r5,r6,r7,r8,r9,r10,r14,r18,r19",
+          "tags": [
+            "pink"
+          ],
+          "style": {
+            "expanded": true
+          },
+          "expanded": false,
+          "children": [
+            {
+              "id": "gate22",
+              "type": "gate",
+              "gate_type": "swap",
+              "input_registers": "r9,r3\n",
+              "controlled_by": "r19"
+            },
+            {
+              "id": "column9",
+              "type": "column",
+              "input_registers": "*",
+              "style": {
+                "expanded": true
+              },
+              "children": [
+                {
+                  "id": "routine28",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r19",
+                  "label": "\\oplus(\\text{keep}_{x_0,b}\\leq\\text{coin})^\\dagger",
+                  "controlled_by": "r10,r19",
+                  "style": {
+                    "rail_state": "free"
+                  }
+                },
+                {
+                  "id": "routine29",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r18",
+                  "label": "\\text{In}_{\\text{coin}}"
+                },
+                {
+                  "id": "routine30",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r10\n",
+                  "label": "\\text{In}_{\\text{keep}_{x_0,b}}"
+                }
+              ]
+            },
+            {
+              "id": "column8",
+              "type": "column",
+              "input_registers": "*",
+              "children": [
+                {
+                  "id": "gate21",
+                  "type": "gate",
+                  "gate_type": "hadamard",
+                  "input_registers": "r18"
+                },
+                {
+                  "id": "routine24",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r9,r10",
+                  "label": "\\text{data}_{x_0, b}^\\dagger",
+                  "controlled_by": "r3,r1",
+                  "style": {
+                    "rail_state": "free"
+                  }
+                },
+                {
+                  "id": "routine25",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r5,r6,r7,r8",
+                  "label": "\\text{data}_{x_0}^\\dagger",
+                  "tags": [
+                    "collapse-text-vertical"
+                  ],
+                  "controlled_by": "r1",
+                  "style": {
+                    "rail_state": "free"
+                  }
+                },
+                {
+                  "id": "gate20",
+                  "type": "gate",
+                  "gate_type": "hadamard",
+                  "input_registers": "r14"
+                },
+                {
+                  "id": "routine26",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r1",
+                  "label": "\\text{In}_{x_0}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                },
+                {
+                  "id": "routine27",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r3",
+                  "label": "\\text{In}_{b}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "routine32",
+              "type": "routine",
+              "name": "routine",
+              "input_registers": "r3,r4",
+              "label": "\\text{USP}^\\dagger"
+            }
+          ]
+        },
+        {
+          "id": "gate23",
+          "type": "gate",
+          "gate_type": "cnot",
+          "controlled_by": "~r14,~r3,r2,r4"
+        },
+        {
+          "id": "routine33",
+          "type": "routine",
+          "name": "routine",
+          "label": "\\text{inner prep}",
+          "input_registers": "r1,r3,r4,r5,r6,r7,r8,r9,r10,r14,r18,r19",
+          "tags": [
+            "pink"
+          ],
+          "style": {
+            "expanded": true
+          },
+          "expanded": false,
+          "children": [
+            {
+              "id": "routine34",
+              "type": "routine",
+              "name": "routine",
+              "input_registers": "r3,r4",
+              "label": "\\text{USP}"
+            },
+            {
+              "id": "column10",
+              "type": "column",
+              "input_registers": "*",
+              "children": [
+                {
+                  "id": "routine35",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r9,r10",
+                  "label": "\\text{data}_{x_0, b}",
+                  "controlled_by": "r3,r1",
+                  "style": {
+                    "rail_state": "in_use"
+                  }
+                },
+                {
+                  "id": "routine36",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r5,r6,r7,r8",
+                  "label": "\\text{data}_{x_0}",
+                  "tags": [
+                    "collapse-text-vertical"
+                  ],
+                  "controlled_by": "r1",
+                  "style": {
+                    "rail_state": "in_use"
+                  }
+                },
+                {
+                  "id": "gate24",
+                  "type": "gate",
+                  "gate_type": "hadamard",
+                  "input_registers": "r14"
+                },
+                {
+                  "id": "routine37",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r1",
+                  "label": "\\text{In}_{x_0}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                },
+                {
+                  "id": "routine38",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r3",
+                  "label": "\\text{In}_{b}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                },
+                {
+                  "id": "gate25",
+                  "type": "gate",
+                  "gate_type": "hadamard",
+                  "input_registers": "r18"
+                }
+              ]
+            },
+            {
+              "id": "column11",
+              "type": "column",
+              "input_registers": "*",
+              "style": {
+                "expanded": true
+              },
+              "children": [
+                {
+                  "id": "routine39",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r19",
+                  "label": "\\oplus(\\text{keep}_{x_0,b}\\leq\\text{coin})",
+                  "controlled_by": "r10,r19",
+                  "style": {
+                    "rail_state": "in_use"
+                  }
+                },
+                {
+                  "id": "routine40",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r18",
+                  "label": "\\text{In}_{\\text{coin}}"
+                },
+                {
+                  "id": "routine41",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r10\n",
+                  "label": "\\text{In}_{\\text{keep}_{x_0,b}}"
+                }
+              ]
+            },
+            {
+              "id": "gate26",
+              "type": "gate",
+              "gate_type": "swap",
+              "input_registers": "r9,r3\n",
+              "controlled_by": "r19"
+            }
+          ]
+        },
+        {
+          "id": "routine42",
+          "type": "routine",
+          "name": "routine",
+          "input_registers": "r11,r12,r3,r7,r15,r16,r17,r20,r14,r13,r5,r6,r2,r4",
+          "label": "\\text{inner SELECT}^\\dagger",
+          "tags": [
+            "tan"
+          ],
+          "style": {
+            "expanded": true
+          },
+          "expanded": false,
+          "children": [
+            {
+              "id": "column12",
+              "type": "column",
+              "input_registers": "*",
+              "children": [
+                {
+                  "id": "routine43",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r11,r12",
+                  "controlled_by": "r3",
+                  "label": "\\text{data}_{r,b}",
+                  "style": {
+                    "rail_state": "in_use"
+                  }
+                },
+                {
+                  "id": "routine44",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r3",
+                  "label": "\\text{In}_b",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                },
+                {
+                  "id": "routine45",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r7",
+                  "label": "\\text{In}_r",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gate27",
+              "type": "gate",
+              "gate_type": "lelbow",
+              "input_registers": "r15",
+              "controlled_by": "r13,~r5"
+            },
+            {
+              "id": "gate28",
+              "type": "gate",
+              "gate_type": "cnot",
+              "input_registers": "r15",
+              "controlled_by": "r14,r5"
+            },
+            {
+              "id": "gate29",
+              "type": "gate",
+              "gate_type": "swap",
+              "input_registers": "r16,r17",
+              "controlled_by": "r15"
+            },
+            {
+              "id": "column13",
+              "type": "column",
+              "input_registers": "*",
+              "children": [
+                {
+                  "id": "routine46",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r16",
+                  "label": "R_{\\text{Givens}}",
+                  "controlled_by": "r11"
+                },
+                {
+                  "id": "routine47",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r11\n",
+                  "label": "\\text{In}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "routine48",
+              "type": "routine",
+              "name": "routine",
+              "input_registers": "r16,r5,r6,r12,r15\n",
+              "label": "\\text{Maj}^\\dagger",
+              "controlled_by": "r2,r4",
+              "tags": [
+                "green"
+              ],
+              "style": {
+                "expanded": true
+              },
+              "children": [
+                {
+                  "id": "gate34",
+                  "type": "gate",
+                  "gate_type": "cnot",
+                  "controlled_by": "r6,r15"
+                },
+                {
+                  "id": "gate33",
+                  "type": "gate",
+                  "gate_type": "cnot",
+                  "controlled_by": "~r5,r15,r16"
+                },
+                {
+                  "id": "gate32",
+                  "type": "gate",
+                  "gate_type": "cnot",
+                  "input_registers": "r16\n",
+                  "controlled_by": "~r5"
+                },
+                {
+                  "id": "gate30",
+                  "type": "gate",
+                  "gate_type": "swap",
+                  "controlled_by": "r5,~r12,r16"
+                }
+              ]
+            },
+            {
+              "id": "column14",
+              "type": "column",
+              "input_registers": "*",
+              "children": [
+                {
+                  "id": "routine49",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r16",
+                  "label": "R_{\\text{Givens}}^\\dagger",
+                  "controlled_by": "r11"
+                },
+                {
+                  "id": "routine50",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r11\n",
+                  "label": "\\text{In}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "gate36",
+              "type": "gate",
+              "gate_type": "swap",
+              "input_registers": "r16,r17",
+              "controlled_by": "r15",
+              "style": {
+                "rail_state": "allocated"
+              }
+            },
+            {
+              "id": "gate37",
+              "type": "gate",
+              "gate_type": "hadamard",
+              "input_registers": "r15"
+            },
+            {
+              "id": "gate38",
+              "type": "gate",
+              "gate_type": "measurement",
+              "input_registers": "r15"
+            },
+            {
+              "id": "gate39",
+              "type": "gate",
+              "gate_type": "cnot",
+              "controlled_by": "r15,r13,~r5"
+            },
+            {
+              "id": "gate40",
+              "type": "gate",
+              "gate_type": "cnot",
+              "controlled_by": "r15,r14,r5"
+            },
+            {
+              "id": "gate41",
+              "type": "gate",
+              "gate_type": "relbow",
+              "input_registers": "r15"
+            },
+            {
+              "id": "column15",
+              "type": "column",
+              "input_registers": "*",
+              "children": [
+                {
+                  "id": "routine51",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r11,r12",
+                  "controlled_by": "r3",
+                  "label": "\\text{data}_{r,b}^\\dagger",
+                  "style": {
+                    "rail_state": "free"
+                  }
+                },
+                {
+                  "id": "routine52",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r3",
+                  "label": "\\text{In}_b",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                },
+                {
+                  "id": "routine53",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r7",
+                  "label": "\\text{In}_r",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "routine54",
+          "type": "routine",
+          "name": "routine",
+          "label": "\\text{inner prep}^\\dagger",
+          "input_registers": "r1,r3,r4,r5,r6,r7,r8,r9,r10,r14,r18,r19",
+          "tags": [
+            "pink"
+          ],
+          "style": {
+            "expanded": true
+          },
+          "children": [
+            {
+              "id": "gate42",
+              "type": "gate",
+              "gate_type": "swap",
+              "input_registers": "r9,r3\n",
+              "controlled_by": "r19"
+            },
+            {
+              "id": "column16",
+              "type": "column",
+              "input_registers": "*",
+              "style": {
+                "expanded": true
+              },
+              "children": [
+                {
+                  "id": "routine55",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r19",
+                  "label": "\\oplus(\\text{keep}_{x_0,b}\\leq\\text{coin})^\\dagger",
+                  "controlled_by": "r10,r19",
+                  "style": {
+                    "rail_state": "free"
+                  }
+                },
+                {
+                  "id": "routine56",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r18",
+                  "label": "\\text{In}_{\\text{coin}}"
+                },
+                {
+                  "id": "routine57",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r10\n",
+                  "label": "\\text{In}_{\\text{keep}_{x_0,b}}"
+                }
+              ]
+            },
+            {
+              "id": "column17",
+              "type": "column",
+              "input_registers": "*",
+              "children": [
+                {
+                  "id": "gate43",
+                  "type": "gate",
+                  "gate_type": "hadamard",
+                  "input_registers": "r18"
+                },
+                {
+                  "id": "routine58",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r9,r10",
+                  "label": "\\text{data}_{x_0, b}^\\dagger",
+                  "controlled_by": "r3,r1",
+                  "style": {
+                    "rail_state": "free"
+                  }
+                },
+                {
+                  "id": "routine59",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r5,r6,r7,r8",
+                  "label": "\\text{data}_{x_0}^\\dagger",
+                  "tags": [
+                    "collapse-text-vertical"
+                  ],
+                  "controlled_by": "r1",
+                  "style": {
+                    "rail_state": "free"
+                  }
+                },
+                {
+                  "id": "gate44",
+                  "type": "gate",
+                  "gate_type": "hadamard",
+                  "input_registers": "r14"
+                },
+                {
+                  "id": "routine60",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r1",
+                  "label": "\\text{In}_{x_0}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                },
+                {
+                  "id": "routine61",
+                  "type": "routine",
+                  "name": "routine",
+                  "input_registers": "r3",
+                  "label": "\\text{In}_{b}",
+                  "style": {
+                    "box_el": {
+                      "shape": "hexagon"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "id": "routine62",
+              "type": "routine",
+              "name": "routine",
+              "input_registers": "r3,r4",
+              "label": "\\text{USP}^\\dagger"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "routine64",
+      "type": "routine",
+      "name": "routine",
+      "label": "\\text{outer prep}^\\dagger",
+      "input_registers": "r1,r2,r13",
+      "tags": [
+        "red"
+      ],
+      "style": {
+        "expanded": true
+      },
+      "expanded": false,
+      "children": [
+        {
+          "id": "column18",
+          "type": "column",
+          "input_registers": "*",
+          "children": [
+            {
+              "id": "gate45",
+              "type": "gate",
+              "gate_type": "hadamard",
+              "input_registers": "r13"
+            },
+            {
+              "id": "routine65",
+              "type": "routine",
+              "name": "routine",
+              "input_registers": "r1,r2",
+              "label": "\\text{prep}^\\dagger",
+              "tags": [
+                "collapse-text-vertical"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "record_format": 2,
+  "modified": "2026-02-06T17:58:27.650Z",
+  "style": {
+    "show_rail_allocation": true
+  }
+}
