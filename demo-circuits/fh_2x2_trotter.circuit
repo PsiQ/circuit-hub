@@ -1,24 +1,41 @@
 {
   "record_type": "psiquantum.circuit",
-  "title": "Fermi Hubbard 4x4 Trotter",
+  "title": "Fermi Hubbard 2x2 Trotter",
   "copyright": "Earl T Campbell 2022 Quantum Sci. Technol. 7 015007",
+  "style": {
+    "title_el": {
+      "visible": true
+    },
+    "copyright_el": {
+      "visible": true
+    },
+    "container_el": {
+      "border": "none",
+      "stroke": {
+        "border_style": "none"
+      }
+    }
+  },
+  "record_format": 2,
+  "modified": "2026-02-10T18:52:55.643Z",
   "operations": [
     {
       "id": "spin_orbitals",
       "type": "register",
       "label": "\\ket{j, \\sigma}",
-      "rail_names": "0 \\uparrow, 0 \\downarrow, 1 \\uparrow, 1 \\downarrow, ..., 16 \\uparrow, 16 \\downarrow, 17 \\uparrow, 17 \\downarrow, ..., L^2-2 \\uparrow, L^2-2 \\downarrow, L^2-1 \\uparrow, L^2-1 \\downarrow,",
       "style": {
-        "expanded": true
-      }
+        "expanded": true,
+        "enumerate": "decimal"
+      },
+      "size": 8
     },
     {
       "name": "routine",
       "label": "\\text{interaction}",
-      "input_registers": "spin_orbitals",
+      "input_registers": "spin_orbitals[:8]",
       "type": "routine",
       "id": "routine106",
-      "expanded": false,
+      "expanded": true,
       "tags": "expand-text-above,cyan,border-cyan",
       "style": {
         "box_el": {
@@ -52,29 +69,15 @@
               "id": "gate38",
               "type": "gate",
               "gate_type": "cnot",
-              "input_registers": "spin_orbitals[7]",
-              "controlled_by": "spin_orbitals[6]"
+              "input_registers": "spin_orbitals[5]",
+              "controlled_by": "spin_orbitals[4]"
             },
             {
               "id": "gate39",
               "type": "gate",
               "gate_type": "cnot",
-              "input_registers": "spin_orbitals[9]",
-              "controlled_by": "spin_orbitals[8]"
-            },
-            {
-              "id": "gate40",
-              "type": "gate",
-              "gate_type": "cnot",
-              "input_registers": "spin_orbitals[13]",
-              "controlled_by": "spin_orbitals[12]"
-            },
-            {
-              "id": "gate41",
-              "type": "gate",
-              "gate_type": "cnot",
-              "input_registers": "spin_orbitals[15]",
-              "controlled_by": "spin_orbitals[14]"
+              "input_registers": "spin_orbitals[7]",
+              "controlled_by": "spin_orbitals[6]"
             }
           ]
         },
@@ -82,7 +85,7 @@
           "id": "gate42",
           "type": "gate",
           "gate_type": "rz",
-          "input_registers": "spin_orbitals[1,3,7,9,13,15]"
+          "input_registers": "spin_orbitals[1,3,5,7]"
         },
         {
           "id": "column21",
@@ -108,29 +111,15 @@
               "id": "gate45",
               "type": "gate",
               "gate_type": "cnot",
-              "input_registers": "spin_orbitals[7]",
-              "controlled_by": "spin_orbitals[6]"
+              "input_registers": "spin_orbitals[5]",
+              "controlled_by": "spin_orbitals[4]"
             },
             {
               "id": "gate46",
               "type": "gate",
               "gate_type": "cnot",
-              "input_registers": "spin_orbitals[9]",
-              "controlled_by": "spin_orbitals[8]"
-            },
-            {
-              "id": "gate47",
-              "type": "gate",
-              "gate_type": "cnot",
-              "input_registers": "spin_orbitals[13]",
-              "controlled_by": "spin_orbitals[12]"
-            },
-            {
-              "id": "gate48",
-              "type": "gate",
-              "gate_type": "cnot",
-              "input_registers": "spin_orbitals[15]",
-              "controlled_by": "spin_orbitals[14]"
+              "input_registers": "spin_orbitals[7]",
+              "controlled_by": "spin_orbitals[6]"
             }
           ]
         }
@@ -139,7 +128,7 @@
     {
       "name": "routine",
       "label": "\\text{pink plaquette}",
-      "input_registers": "spin_orbitals",
+      "input_registers": "spin_orbitals[:8]",
       "type": "routine",
       "id": "routine79",
       "expanded": true,
@@ -157,7 +146,7 @@
           "type": "routine",
           "name": "fswap_network_pink",
           "label": "\\textsf{fSWAP network (pink)}",
-          "input_registers": "spin_orbitals",
+          "input_registers": "spin_orbitals[:8]",
           "style": {
             "box_el": {
               "text_direction": "up",
@@ -184,14 +173,7 @@
               "type": "routine",
               "name": "fswap16",
               "label": "\\textsf{fSWAP}^\\dagger",
-              "input_registers": "spin_orbitals[7,8]"
-            },
-            {
-              "id": "routine10",
-              "type": "routine",
-              "name": "fswapLsq",
-              "label": "\\textsf{fSWAP}^\\dagger",
-              "input_registers": "spin_orbitals[13,14]"
+              "input_registers": "spin_orbitals[5,6]"
             }
           ]
         },
@@ -220,28 +202,14 @@
               "type": "routine",
               "name": "F16",
               "label": "F^\\dagger",
-              "input_registers": "spin_orbitals[6,7]"
+              "input_registers": "spin_orbitals[4,5]"
             },
             {
               "id": "routine14",
               "type": "routine",
               "name": "F17",
               "label": "F^\\dagger",
-              "input_registers": "spin_orbitals[8,9]"
-            },
-            {
-              "id": "routine15",
-              "type": "routine",
-              "name": "F_Lsqminus1",
-              "label": "F^\\dagger",
-              "input_registers": "spin_orbitals[12,13]"
-            },
-            {
-              "id": "routine16",
-              "type": "routine",
-              "name": "F_Lsq",
-              "label": "F^\\dagger",
-              "input_registers": "spin_orbitals[14,15]"
+              "input_registers": "spin_orbitals[6,7]"
             }
           ]
         },
@@ -250,6 +218,9 @@
           "type": "column",
           "input_registers": "*",
           "name": "XXYY_rot",
+          "style": {
+            "overlap_children": true
+          },
           "children": [
             {
               "id": "routine17",
@@ -263,14 +234,7 @@
               "type": "routine",
               "name": "xxyy1617",
               "label": "\\textsf{exp}(it(XX+YY))",
-              "input_registers": "spin_orbitals[7,8]"
-            },
-            {
-              "id": "routine19",
-              "type": "routine",
-              "name": "xxyylast",
-              "label": "\\textsf{exp}(it(XX+YY))",
-              "input_registers": "spin_orbitals[13,14]"
+              "input_registers": "spin_orbitals[5,6]"
             }
           ]
         },
@@ -299,28 +263,14 @@
               "type": "routine",
               "name": "F16",
               "label": "F",
-              "input_registers": "spin_orbitals[6,7]"
+              "input_registers": "spin_orbitals[4,5]"
             },
             {
               "id": "routine23",
               "type": "routine",
               "name": "F17",
               "label": "F",
-              "input_registers": "spin_orbitals[8,9]"
-            },
-            {
-              "id": "routine24",
-              "type": "routine",
-              "name": "F_Lsqminus1",
-              "label": "F",
-              "input_registers": "spin_orbitals[12,13]"
-            },
-            {
-              "id": "routine25",
-              "type": "routine",
-              "name": "F_Lsq",
-              "label": "F",
-              "input_registers": "spin_orbitals[14,15]"
+              "input_registers": "spin_orbitals[6,7]"
             }
           ]
         },
@@ -342,14 +292,7 @@
               "type": "routine",
               "name": "fswap16",
               "label": "\\textsf{fSWAP}",
-              "input_registers": "spin_orbitals[7,8]"
-            },
-            {
-              "id": "routine28",
-              "type": "routine",
-              "name": "fswapLsq",
-              "label": "\\textsf{fSWAP}",
-              "input_registers": "spin_orbitals[13,14]"
+              "input_registers": "spin_orbitals[5,6]"
             }
           ]
         },
@@ -358,7 +301,7 @@
           "type": "routine",
           "name": "fswap_network_pink_dag",
           "label": "\\textsf{fSWAP network (pink)}^\\dagger",
-          "input_registers": "spin_orbitals",
+          "input_registers": "spin_orbitals[:8]",
           "style": {
             "box_el": {
               "text_direction": "up",
@@ -372,10 +315,10 @@
     {
       "name": "routine",
       "label": "\\text{gold plaquette}",
-      "input_registers": "spin_orbitals",
+      "input_registers": "spin_orbitals[:8]",
       "type": "routine",
       "id": "routine80",
-      "expanded": false,
+      "expanded": true,
       "tags": "expand-text-above,yellow,border-yellow",
       "style": {
         "box_el": {
@@ -390,7 +333,7 @@
           "type": "routine",
           "name": "fswap_network_gold",
           "label": "\\textsf{fSWAP network (gold)}",
-          "input_registers": "spin_orbitals",
+          "input_registers": "spin_orbitals[:8]",
           "style": {
             "box_el": {
               "text_direction": "up",
@@ -400,189 +343,132 @@
           }
         },
         {
-          "id": "column12",
-          "type": "column",
-          "input_registers": "*",
-          "name": "local_fswaps",
-          "children": [
-            {
-              "id": "routine53",
-              "type": "routine",
-              "name": "fswap0",
-              "label": "\\textsf{fSWAP}^\\dagger",
-              "input_registers": "spin_orbitals[1:3]"
-            },
-            {
-              "id": "routine54",
-              "type": "routine",
-              "name": "fswap16",
-              "label": "\\textsf{fSWAP}^\\dagger",
-              "input_registers": "spin_orbitals[7,8]"
-            },
-            {
-              "id": "routine55",
-              "type": "routine",
-              "name": "fswapLsq",
-              "label": "\\textsf{fSWAP}^\\dagger",
-              "input_registers": "spin_orbitals[13,14]"
-            }
-          ]
+          "id": "routine108",
+          "type": "routine",
+          "name": "fswap0",
+          "label": "\\textsf{fSWAP}^\\dagger",
+          "input_registers": "spin_orbitals[1:3]"
         },
         {
-          "id": "column8",
+          "id": "routine109",
+          "type": "routine",
+          "name": "fswap16",
+          "label": "\\textsf{fSWAP}^\\dagger",
+          "input_registers": "spin_orbitals[5,6]"
+        },
+        {
+          "id": "column24",
           "type": "column",
           "input_registers": "*",
           "name": "F_ops_1",
           "children": [
             {
-              "id": "routine34",
+              "id": "routine110",
               "type": "routine",
               "name": "F0",
               "label": "F^\\dagger",
               "input_registers": "spin_orbitals[0:2]"
             },
             {
-              "id": "routine35",
+              "id": "routine111",
               "type": "routine",
               "name": "F1",
               "label": "F^\\dagger",
               "input_registers": "spin_orbitals[2:4]"
             },
             {
-              "id": "routine36",
+              "id": "routine112",
               "type": "routine",
               "name": "F16",
               "label": "F^\\dagger",
-              "input_registers": "spin_orbitals[6,7]"
+              "input_registers": "spin_orbitals[4,5]"
             },
             {
-              "id": "routine37",
+              "id": "routine113",
               "type": "routine",
               "name": "F17",
               "label": "F^\\dagger",
-              "input_registers": "spin_orbitals[8,9]"
-            },
-            {
-              "id": "routine38",
-              "type": "routine",
-              "name": "F_Lsqminus1",
-              "label": "F^\\dagger",
-              "input_registers": "spin_orbitals[12,13]"
-            },
-            {
-              "id": "routine39",
-              "type": "routine",
-              "name": "F_Lsq",
-              "label": "F^\\dagger",
-              "input_registers": "spin_orbitals[14,15]"
+              "input_registers": "spin_orbitals[6,7]"
             }
           ]
         },
         {
-          "id": "column9",
+          "id": "column25",
           "type": "column",
           "input_registers": "*",
           "name": "XXYY_rot",
           "children": [
             {
-              "id": "routine40",
+              "id": "routine114",
               "type": "routine",
               "name": "xxyy01",
               "label": "\\textsf{exp}(it(XX+YY))",
               "input_registers": "spin_orbitals[1:3]"
             },
             {
-              "id": "routine41",
+              "id": "routine115",
               "type": "routine",
               "name": "xxyy1617",
               "label": "\\textsf{exp}(it(XX+YY))",
-              "input_registers": "spin_orbitals[7,8]"
-            },
-            {
-              "id": "routine42",
-              "type": "routine",
-              "name": "xxyylast",
-              "label": "\\textsf{exp}(it(XX+YY))",
-              "input_registers": "spin_orbitals[13,14]"
+              "input_registers": "spin_orbitals[5,6]"
             }
           ]
         },
         {
-          "id": "column10",
+          "id": "column26",
           "type": "column",
           "input_registers": "*",
           "name": "F_ops_2",
           "children": [
             {
-              "id": "routine43",
+              "id": "routine116",
               "type": "routine",
               "name": "F0",
               "label": "F",
               "input_registers": "spin_orbitals[0:2]"
             },
             {
-              "id": "routine44",
+              "id": "routine117",
               "type": "routine",
               "name": "F1",
               "label": "F",
               "input_registers": "spin_orbitals[2:4]"
             },
             {
-              "id": "routine45",
+              "id": "routine118",
               "type": "routine",
               "name": "F16",
               "label": "F",
-              "input_registers": "spin_orbitals[6,7]"
+              "input_registers": "spin_orbitals[4,5]"
             },
             {
-              "id": "routine46",
+              "id": "routine119",
               "type": "routine",
               "name": "F17",
               "label": "F",
-              "input_registers": "spin_orbitals[8,9]"
-            },
-            {
-              "id": "routine47",
-              "type": "routine",
-              "name": "F_Lsqminus1",
-              "label": "F",
-              "input_registers": "spin_orbitals[12,13]"
-            },
-            {
-              "id": "routine48",
-              "type": "routine",
-              "name": "F_Lsq",
-              "label": "F",
-              "input_registers": "spin_orbitals[14,15]"
+              "input_registers": "spin_orbitals[6,7]"
             }
           ]
         },
         {
-          "id": "column11",
+          "id": "column27",
           "type": "column",
           "input_registers": "*",
           "name": "local_fswaps",
           "children": [
             {
-              "id": "routine49",
+              "id": "routine120",
               "type": "routine",
               "name": "fswap0",
               "label": "\\textsf{fSWAP}",
               "input_registers": "spin_orbitals[1:3]"
             },
             {
-              "id": "routine50",
+              "id": "routine121",
               "type": "routine",
               "name": "fswap16",
               "label": "\\textsf{fSWAP}",
-              "input_registers": "spin_orbitals[7,8]"
-            },
-            {
-              "id": "routine51",
-              "type": "routine",
-              "name": "fswapLsq",
-              "label": "\\textsf{fSWAP}",
-              "input_registers": "spin_orbitals[13,14]"
+              "input_registers": "spin_orbitals[5,6]"
             }
           ]
         },
@@ -591,7 +477,7 @@
           "type": "routine",
           "name": "fswap_network_gold_dag",
           "label": "\\textsf{fSWAP network (gold)}^\\dagger",
-          "input_registers": "spin_orbitals",
+          "input_registers": "spin_orbitals[:8]",
           "style": {
             "box_el": {
               "text_direction": "up",
@@ -605,10 +491,10 @@
     {
       "name": "routine",
       "label": "\\text{pink plaquette}",
-      "input_registers": "spin_orbitals",
+      "input_registers": "spin_orbitals[:8]",
       "type": "routine",
-      "id": "routine82",
-      "expanded": false,
+      "id": "routine122",
+      "expanded": true,
       "tags": "expand-text-above,pink,border-pink",
       "style": {
         "box_el": {
@@ -619,11 +505,11 @@
       },
       "children": [
         {
-          "id": "routine83",
+          "id": "routine123",
           "type": "routine",
           "name": "fswap_network_pink",
           "label": "\\textsf{fSWAP network (pink)}",
-          "input_registers": "spin_orbitals",
+          "input_registers": "spin_orbitals[:8]",
           "style": {
             "box_el": {
               "text_direction": "up",
@@ -633,198 +519,149 @@
           }
         },
         {
-          "id": "column15",
+          "id": "column28",
           "type": "column",
           "input_registers": "*",
           "name": "local_fswaps",
           "children": [
             {
-              "id": "routine84",
+              "id": "routine124",
               "type": "routine",
               "name": "fswap0",
               "label": "\\textsf{fSWAP}^\\dagger",
               "input_registers": "spin_orbitals[1:3]"
             },
             {
-              "id": "routine85",
+              "id": "routine125",
               "type": "routine",
               "name": "fswap16",
               "label": "\\textsf{fSWAP}^\\dagger",
-              "input_registers": "spin_orbitals[7,8]"
-            },
-            {
-              "id": "routine86",
-              "type": "routine",
-              "name": "fswapLsq",
-              "label": "\\textsf{fSWAP}^\\dagger",
-              "input_registers": "spin_orbitals[13,14]"
+              "input_registers": "spin_orbitals[5,6]"
             }
           ]
         },
         {
-          "id": "column16",
+          "id": "column29",
           "type": "column",
           "input_registers": "*",
           "name": "F_ops_1",
           "children": [
             {
-              "id": "routine87",
+              "id": "routine126",
               "type": "routine",
               "name": "F0",
               "label": "F^\\dagger",
               "input_registers": "spin_orbitals[0:2]"
             },
             {
-              "id": "routine88",
+              "id": "routine127",
               "type": "routine",
               "name": "F1",
               "label": "F^\\dagger",
               "input_registers": "spin_orbitals[2:4]"
             },
             {
-              "id": "routine89",
+              "id": "routine128",
               "type": "routine",
               "name": "F16",
               "label": "F^\\dagger",
-              "input_registers": "spin_orbitals[6,7]"
+              "input_registers": "spin_orbitals[4,5]"
             },
             {
-              "id": "routine90",
+              "id": "routine129",
               "type": "routine",
               "name": "F17",
               "label": "F^\\dagger",
-              "input_registers": "spin_orbitals[8,9]"
-            },
-            {
-              "id": "routine91",
-              "type": "routine",
-              "name": "F_Lsqminus1",
-              "label": "F^\\dagger",
-              "input_registers": "spin_orbitals[12,13]"
-            },
-            {
-              "id": "routine92",
-              "type": "routine",
-              "name": "F_Lsq",
-              "label": "F^\\dagger",
-              "input_registers": "spin_orbitals[14,15]"
+              "input_registers": "spin_orbitals[6,7]"
             }
           ]
         },
         {
-          "id": "column17",
+          "id": "column30",
           "type": "column",
           "input_registers": "*",
           "name": "XXYY_rot",
           "children": [
             {
-              "id": "routine93",
+              "id": "routine130",
               "type": "routine",
               "name": "xxyy01",
               "label": "\\textsf{exp}(it(XX+YY))",
               "input_registers": "spin_orbitals[1:3]"
             },
             {
-              "id": "routine94",
+              "id": "routine131",
               "type": "routine",
               "name": "xxyy1617",
               "label": "\\textsf{exp}(it(XX+YY))",
-              "input_registers": "spin_orbitals[7,8]"
-            },
-            {
-              "id": "routine95",
-              "type": "routine",
-              "name": "xxyylast",
-              "label": "\\textsf{exp}(it(XX+YY))",
-              "input_registers": "spin_orbitals[13,14]"
+              "input_registers": "spin_orbitals[5,6]"
             }
           ]
         },
         {
-          "id": "column18",
+          "id": "column31",
           "type": "column",
           "input_registers": "*",
           "name": "F_ops_2",
           "children": [
             {
-              "id": "routine96",
+              "id": "routine132",
               "type": "routine",
               "name": "F0",
               "label": "F",
               "input_registers": "spin_orbitals[0:2]"
             },
             {
-              "id": "routine97",
+              "id": "routine133",
               "type": "routine",
               "name": "F1",
               "label": "F",
               "input_registers": "spin_orbitals[2:4]"
             },
             {
-              "id": "routine98",
+              "id": "routine134",
               "type": "routine",
               "name": "F16",
               "label": "F",
-              "input_registers": "spin_orbitals[6,7]"
+              "input_registers": "spin_orbitals[4,5]"
             },
             {
-              "id": "routine99",
+              "id": "routine135",
               "type": "routine",
               "name": "F17",
               "label": "F",
-              "input_registers": "spin_orbitals[8,9]"
-            },
-            {
-              "id": "routine100",
-              "type": "routine",
-              "name": "F_Lsqminus1",
-              "label": "F",
-              "input_registers": "spin_orbitals[12,13]"
-            },
-            {
-              "id": "routine101",
-              "type": "routine",
-              "name": "F_Lsq",
-              "label": "F",
-              "input_registers": "spin_orbitals[14,15]"
+              "input_registers": "spin_orbitals[6,7]"
             }
           ]
         },
         {
-          "id": "column19",
+          "id": "column32",
           "type": "column",
           "input_registers": "*",
           "name": "local_fswaps",
           "children": [
             {
-              "id": "routine102",
+              "id": "routine136",
               "type": "routine",
               "name": "fswap0",
               "label": "\\textsf{fSWAP}",
               "input_registers": "spin_orbitals[1:3]"
             },
             {
-              "id": "routine103",
+              "id": "routine137",
               "type": "routine",
               "name": "fswap16",
               "label": "\\textsf{fSWAP}",
-              "input_registers": "spin_orbitals[7,8]"
-            },
-            {
-              "id": "routine104",
-              "type": "routine",
-              "name": "fswapLsq",
-              "label": "\\textsf{fSWAP}",
-              "input_registers": "spin_orbitals[13,14]"
+              "input_registers": "spin_orbitals[5,6]"
             }
           ]
         },
         {
-          "id": "routine105",
+          "id": "routine138",
           "type": "routine",
           "name": "fswap_network_pink_dag",
           "label": "\\textsf{fSWAP network (pink)}^\\dagger",
-          "input_registers": "spin_orbitals",
+          "input_registers": "spin_orbitals[:8]",
           "style": {
             "box_el": {
               "text_direction": "up",
@@ -838,10 +675,10 @@
     {
       "name": "routine",
       "label": "\\text{interaction}",
-      "input_registers": "spin_orbitals",
+      "input_registers": "spin_orbitals[:8]",
       "type": "routine",
-      "id": "routine81",
-      "expanded": false,
+      "id": "routine107",
+      "expanded": true,
       "tags": "expand-text-above,cyan,border-cyan",
       "style": {
         "box_el": {
@@ -852,128 +689,84 @@
       },
       "children": [
         {
-          "id": "column13",
+          "id": "column22",
           "type": "column",
           "input_registers": "*",
           "name": "cnot_interaction_1",
           "children": [
             {
-              "id": "gate23",
+              "id": "gate47",
               "type": "gate",
               "gate_type": "cnot",
               "input_registers": "spin_orbitals[1]",
               "controlled_by": "spin_orbitals[0]"
             },
             {
-              "id": "gate24",
+              "id": "gate48",
               "type": "gate",
               "gate_type": "cnot",
               "input_registers": "spin_orbitals[3]",
               "controlled_by": "spin_orbitals[2]"
             },
             {
-              "id": "gate25",
+              "id": "gate49",
+              "type": "gate",
+              "gate_type": "cnot",
+              "input_registers": "spin_orbitals[5]",
+              "controlled_by": "spin_orbitals[4]"
+            },
+            {
+              "id": "gate50",
               "type": "gate",
               "gate_type": "cnot",
               "input_registers": "spin_orbitals[7]",
               "controlled_by": "spin_orbitals[6]"
-            },
-            {
-              "id": "gate26",
-              "type": "gate",
-              "gate_type": "cnot",
-              "input_registers": "spin_orbitals[9]",
-              "controlled_by": "spin_orbitals[8]"
-            },
-            {
-              "id": "gate27",
-              "type": "gate",
-              "gate_type": "cnot",
-              "input_registers": "spin_orbitals[13]",
-              "controlled_by": "spin_orbitals[12]"
-            },
-            {
-              "id": "gate28",
-              "type": "gate",
-              "gate_type": "cnot",
-              "input_registers": "spin_orbitals[15]",
-              "controlled_by": "spin_orbitals[14]"
             }
           ]
         },
         {
-          "id": "gate29",
+          "id": "gate51",
           "type": "gate",
           "gate_type": "rz",
-          "input_registers": "spin_orbitals[1,3,7,9,13,15]"
+          "input_registers": "spin_orbitals[1,3,5,7]"
         },
         {
-          "id": "column14",
+          "id": "column23",
           "type": "column",
           "input_registers": "*",
           "name": "cnot_interaction_2",
           "children": [
             {
-              "id": "gate30",
+              "id": "gate52",
               "type": "gate",
               "gate_type": "cnot",
               "input_registers": "spin_orbitals[1]",
               "controlled_by": "spin_orbitals[0]"
             },
             {
-              "id": "gate31",
+              "id": "gate53",
               "type": "gate",
               "gate_type": "cnot",
               "input_registers": "spin_orbitals[3]",
               "controlled_by": "spin_orbitals[2]"
             },
             {
-              "id": "gate32",
+              "id": "gate54",
+              "type": "gate",
+              "gate_type": "cnot",
+              "input_registers": "spin_orbitals[5]",
+              "controlled_by": "spin_orbitals[4]"
+            },
+            {
+              "id": "gate55",
               "type": "gate",
               "gate_type": "cnot",
               "input_registers": "spin_orbitals[7]",
               "controlled_by": "spin_orbitals[6]"
-            },
-            {
-              "id": "gate33",
-              "type": "gate",
-              "gate_type": "cnot",
-              "input_registers": "spin_orbitals[9]",
-              "controlled_by": "spin_orbitals[8]"
-            },
-            {
-              "id": "gate34",
-              "type": "gate",
-              "gate_type": "cnot",
-              "input_registers": "spin_orbitals[13]",
-              "controlled_by": "spin_orbitals[12]"
-            },
-            {
-              "id": "gate35",
-              "type": "gate",
-              "gate_type": "cnot",
-              "input_registers": "spin_orbitals[15]",
-              "controlled_by": "spin_orbitals[14]"
             }
           ]
         }
       ]
     }
-  ],
-  "style": {
-    "title_el": {
-      "visible": true
-    },
-    "copyright_el": {
-      "visible": true
-    },
-    "container_el": {
-      "border": "none",
-      "stroke": {
-        "border_style": "none"
-      }
-    }
-  },
-  "record_format": 2,
-  "modified": "2026-01-22T18:52:21.275Z"
+  ]
 }
