@@ -1,0 +1,132 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "Circuit Desinger Takes You Places",
+  "copyright": "Copyright (c) 2026.  All rights reserved. Ian Nanez + Jason Miller",
+  "record_format": 2,
+  "modified": "2026-02-10T22:12:36.561Z",
+  "operations": [
+    {
+      "type": "register",
+      "id": "r3",
+      "label": "register",
+      "style": {
+        "rail_state": "free",
+        "label_el": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "type": "register",
+      "id": "r4",
+      "label": "\\text{Road to Utility}",
+      "style": {
+        "rail_state": "free"
+      }
+    },
+    {
+      "input_registers": "*",
+      "type": "column",
+      "id": "column2",
+      "style": {
+        "connect": "none"
+      },
+      "children": [
+        {
+          "input_registers": "r4",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate2"
+        },
+        {
+          "gate_type": "swap",
+          "type": "gate",
+          "id": "gate1",
+          "control_type": "control.multiplexor",
+          "input_registers": "r4"
+        }
+      ]
+    },
+    {
+      "input_registers": "*",
+      "type": "column",
+      "id": "column4",
+      "style": {
+        "connect": "children"
+      },
+      "children": [
+        {
+          "input_registers": "r3",
+          "gate_type": "lelbow",
+          "type": "gate",
+          "id": "gate6"
+        },
+        {
+          "input_registers": "r4",
+          "gate_type": "lelbow",
+          "type": "gate",
+          "id": "gate5"
+        }
+      ]
+    },
+    {
+      "input_registers": "*",
+      "type": "column",
+      "id": "column1"
+    },
+    {
+      "input_registers": "*",
+      "type": "column",
+      "id": "column5",
+      "style": {
+        "connect": "children"
+      },
+      "children": [
+        {
+          "input_registers": "r3",
+          "gate_type": "relbow",
+          "type": "gate",
+          "id": "gate7"
+        },
+        {
+          "input_registers": "r4",
+          "gate_type": "lelbow",
+          "type": "gate",
+          "id": "gate8"
+        }
+      ]
+    },
+    {
+      "input_registers": "*",
+      "type": "column",
+      "id": "column3",
+      "style": {
+        "connect": "none"
+      },
+      "children": [
+        {
+          "input_registers": "r4",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate3"
+        },
+        {
+          "gate_type": "swap",
+          "type": "gate",
+          "id": "gate4",
+          "control_type": "control.multiplexor",
+          "input_registers": "r4",
+          "style": {
+            "rail_state": "free"
+          }
+        }
+      ]
+    },
+    {
+      "input_registers": "*",
+      "tags": "spacer",
+      "type": "separator",
+      "id": "separator1"
+    }
+  ]
+}
