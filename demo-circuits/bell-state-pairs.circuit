@@ -29,6 +29,11 @@
       "id": "routine1",
       "expanded": true,
       "tags": "purple",
+      "style": {
+        "box_el": {
+          "text_align": "middle"
+        }
+      },
       "children": [
         {
           "input_registers": "r1",
@@ -67,12 +72,12 @@
     },
     {
       "type": "label",
-      "label_type": "register-end",
+      "label_type": "register-start",
       "label": "\\lvert\\Psi\\rangle = \\bigotimes_{i=1}^n \\frac{1}{\\sqrt{2}} (\\lvert 00 \\rangle + \\lvert 11 \\rangle)_i",
       "input_registers": "*",
       "id": "label1"
     }
   ],
   "record_format": 2,
-  "modified": "2026-01-22T22:29:58.262Z"
+  "modified": "2026-02-11T21:50:24.094Z"
 }

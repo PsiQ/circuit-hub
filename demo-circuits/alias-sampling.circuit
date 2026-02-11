@@ -156,7 +156,7 @@
         },
         "expanded": false
       },
-      "expanded": true,
+      "expanded": false,
       "children": [
         {
           "id": "column",
@@ -333,5 +333,5 @@
   ],
   "copyright": "Babbush, Ryan, et al. “Encoding Electronic Spectra in Quantum Circuits with Linear T Complexity.” Physical Review X, vol. 8, no. 4, 23 Oct. 2018",
   "record_format": 2,
-  "modified": "2026-01-20T18:58:30.146Z"
+  "modified": "2026-02-11T21:50:01.075Z"
 }
