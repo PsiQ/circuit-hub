@@ -1,0 +1,128 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "echo_summary3",
+  "copyright": "Copyright © 2025 PsiQuantum. All rights reserved.",
+  "operations": [
+    {
+      "type": "register",
+      "style": {
+        "enumerate": "custom",
+        "label_el": {
+          "visible": true
+        }
+      },
+      "rail_names": "\\textsf{},\\textsf{},\\textsf{},\\textsf{},...,\\textsf{},\\textsf{}",
+      "expanded": true,
+      "id": "undefined1",
+      "tags": "text-gray",
+      "label": " "
+    },
+    {
+      "input_registers": "*",
+      "type": "group",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "dashed"
+          },
+          "shape": "round_rect"
+        }
+      },
+      "id": "group1",
+      "tags": "gray",
+      "children": [
+        {
+          "input_registers": "undefined1[1]",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate1",
+          "controlled_by": "undefined1[0]"
+        },
+        {
+          "input_registers": "undefined1[3]",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate2",
+          "controlled_by": "undefined1[2]"
+        },
+        {
+          "input_registers": "undefined1[-1]",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate8",
+          "controlled_by": "undefined1[-2]"
+        },
+        {
+          "type": "group",
+          "style": {
+            "box_el": {
+              "stroke": {
+                "border_style": "dotted"
+              },
+              "shape": "round_rect"
+            }
+          },
+          "id": "group2",
+          "input_registers": "undefined1[1:-1]",
+          "tags": "red",
+          "children": [
+            {
+              "input_registers": "undefined1[1]",
+              "gate_type": "rz",
+              "type": "gate",
+              "id": "gate5"
+            },
+            {
+              "input_registers": "undefined1[3]",
+              "gate_type": "rz",
+              "type": "gate",
+              "id": "gate3"
+            },
+            {
+              "input_registers": "undefined1[-1]",
+              "gate_type": "rz",
+              "type": "gate",
+              "id": "gate9"
+            }
+          ]
+        },
+        {
+          "input_registers": "undefined1[1]",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate6",
+          "controlled_by": "undefined1[0]"
+        },
+        {
+          "input_registers": "undefined1[3]",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate4",
+          "controlled_by": "undefined1[02]"
+        },
+        {
+          "input_registers": "undefined1[-1]",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate7",
+          "controlled_by": "undefined1[-2]"
+        }
+      ]
+    }
+  ],
+  "record_format": 2,
+  "modified": "2026-02-18T00:00:18.743Z",
+  "style": {
+    "title_el": {
+      "visible": false
+    },
+    "copyright_el": {
+      "visible": false
+    },
+    "container_el": {
+      "stroke": {
+        "border_style": "none"
+      }
+    }
+  }
+}

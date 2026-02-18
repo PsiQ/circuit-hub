@@ -1,0 +1,256 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "trotterized_unitary",
+  "copyright": "Copyright © 2025 PsiQuantum. All rights reserved.",
+  "operations": [
+    {
+      "type": "register",
+      "id": "r3",
+      "style": {
+        "label_el": {
+          "visible": false
+        },
+        "rail_state": "free",
+        "margin": "t: -9, l: 5, b: -13, r: 5"
+      }
+    },
+    {
+      "type": "register",
+      "id": "r1",
+      "label": "\\textsf{system}",
+      "style": {
+        "collapsed_marker_el": {
+          "visible": true,
+          "text": "\\textsf{m}"
+        },
+        "enumerate": "custom",
+        "label_el": {
+          "visible": false
+        }
+      },
+      "rail_names": "\\textsf{0}, \\textsf{1},\\textsf{2},\\textsf{3},...,\\textsf{2L}^\\textsf{2}-\\textsf{1}",
+      "expanded": true
+    },
+    {
+      "type": "register",
+      "id": "r2",
+      "style": {
+        "label_el": {
+          "visible": false
+        },
+        "rail_state": "free",
+        "margin": "t: -27, l: 5, b: 0, r: 5"
+      }
+    },
+    {
+      "input_registers": "*",
+      "type": "group",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "thin"
+          },
+          "shape": "round_rect",
+          "padding": "t: 0, l: 15, b: 0, r: 17"
+        },
+        "margin": "0"
+      },
+      "id": "group4",
+      "tags": "gray",
+      "children": [
+        {
+          "input_registers": "r1",
+          "type": "group",
+          "style": {
+            "box_el": {
+              "stroke": {
+                "border_style": "dashed"
+              },
+              "text_align": "middle",
+              "shape": "round_rect"
+            }
+          },
+          "id": "group2",
+          "label": "i=1",
+          "children": [
+            {
+              "name": "routine",
+              "input_registers": "r1",
+              "type": "routine",
+              "id": "routine30",
+              "label": "\\ \\ \\ \\textsf{P} \\ \\ \\",
+              "tags": "pink"
+            },
+            {
+              "name": "routine",
+              "input_registers": "r1",
+              "type": "routine",
+              "id": "routine22",
+              "label": "\\textsf{I}",
+              "tags": "lime"
+            },
+            {
+              "name": "routine",
+              "input_registers": "r1",
+              "type": "routine",
+              "id": "routine44",
+              "label": "\\ \\ \\ \\textsf{G} \\ \\ \\",
+              "tags": "orange"
+            },
+            {
+              "name": "routine",
+              "input_registers": "r1",
+              "type": "routine",
+              "id": "routine24",
+              "label": "\\textsf{I}",
+              "tags": "lime"
+            }
+          ]
+        },
+        {
+          "input_registers": "*",
+          "tags": "ellipsis",
+          "type": "separator",
+          "id": "separator1"
+        },
+        {
+          "input_registers": "r1",
+          "type": "group",
+          "style": {
+            "box_el": {
+              "stroke": {
+                "border_style": "dashed"
+              },
+              "text_align": "middle",
+              "shape": "round_rect"
+            }
+          },
+          "id": "group3",
+          "label": "i=r",
+          "children": [
+            {
+              "name": "routine",
+              "input_registers": "r1",
+              "type": "routine",
+              "id": "routine36",
+              "tags": "pink",
+              "expanded": true,
+              "children": [
+                {
+                  "name": "routine",
+                  "input_registers": "r1[0,1,2,3]",
+                  "type": "routine",
+                  "id": "routine37",
+                  "label": "\\textsf{Plaquette}",
+                  "tags": "pink,collapse-text-vertical",
+                  "style": {
+                    "box_el": {
+                      "stroke": {
+                        "border_style": "dotted"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "name": "routine",
+              "input_registers": "r1",
+              "type": "routine",
+              "id": "routine27",
+              "label": "\\textsf{I}",
+              "tags": "lime"
+            },
+            {
+              "name": "routine",
+              "input_registers": "r1",
+              "type": "routine",
+              "id": "routine46",
+              "tags": "orange",
+              "expanded": true,
+              "children": [
+                {
+                  "name": "routine",
+                  "input_registers": "r1",
+                  "type": "routine",
+                  "id": "routine47",
+                  "label": "\\textsf{fSWAP network}",
+                  "tags": "orange,collapse-text-vertical",
+                  "style": {
+                    "box_el": {
+                      "stroke": {
+                        "border_style": "dotted"
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "routine",
+                  "input_registers": "r1[0,1,2,3]",
+                  "type": "routine",
+                  "id": "routine48",
+                  "label": "\\textsf{Plaquette}",
+                  "tags": "orange,collapse-text-vertical",
+                  "style": {
+                    "box_el": {
+                      "stroke": {
+                        "border_style": "dotted"
+                      }
+                    }
+                  }
+                },
+                {
+                  "name": "routine",
+                  "input_registers": "r1",
+                  "type": "routine",
+                  "id": "routine50",
+                  "label": "\\textsf{fSWAP network}^\\dagger",
+                  "tags": "orange,collapse-text-vertical",
+                  "style": {
+                    "box_el": {
+                      "stroke": {
+                        "border_style": "dotted"
+                      }
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "name": "routine",
+              "input_registers": "r1",
+              "type": "routine",
+              "id": "routine29",
+              "label": "\\textsf{I}",
+              "tags": "lime"
+            }
+          ]
+        },
+        {
+          "name": "routine",
+          "input_registers": "r1",
+          "type": "routine",
+          "id": "routine45",
+          "label": "\\ \\ \\ \\textsf{P} \\ \\ \\",
+          "tags": "pink"
+        }
+      ]
+    }
+  ],
+  "record_format": 2,
+  "modified": "2026-02-02T14:00:53.842Z",
+  "style": {
+    "copyright_el": {
+      "visible": false
+    },
+    "title_el": {
+      "visible": false
+    },
+    "show_rail_allocation": true,
+    "container_el": {
+      "stroke": {
+        "border_style": "none"
+      }
+    }
+  }
+}

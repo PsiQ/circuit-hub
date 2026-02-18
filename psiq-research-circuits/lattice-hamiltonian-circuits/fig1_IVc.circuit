@@ -1,0 +1,90 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "echo_summary4",
+  "copyright": "Copyright © 2025 PsiQuantum. All rights reserved.",
+  "operations": [
+    {
+      "type": "register",
+      "id": "r1",
+      "label": "register",
+      "rail_names": "\\textsf{0},\\textsf{1},\\textsf{2},\\textsf{3}",
+      "style": {
+        "enumerate": "custom",
+        "label_el": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "input_registers": "*",
+      "type": "group",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "dashed"
+          }
+        }
+      },
+      "id": "group1",
+      "tags": "gray",
+      "label": "\\textsf{Plaquette}",
+      "children": [
+        {
+          "name": "routine",
+          "label": "\\textsf{U}_\\textsf{Pdiag}",
+          "input_registers": "r1[2,3]",
+          "type": "routine",
+          "id": "routine4",
+          "tags": "gray"
+        },
+        {
+          "name": "routine",
+          "input_registers": "r1[0,1]",
+          "type": "routine",
+          "id": "routine1",
+          "tags": "gray",
+          "label": "\\textsf{U}_\\textsf{Pdiag}"
+        },
+        {
+          "name": "routine",
+          "label": "\\exp(\\mathrm{i}sX\\otimes X)\\exp(\\mathrm{i}sY\\otimes Y)",
+          "input_registers": "r1[1,2]",
+          "type": "routine",
+          "id": "routine5",
+          "tags": "gray"
+        },
+        {
+          "name": "routine",
+          "label": "\\textsf{U}_\\textsf{Pdiag}^\\dagger",
+          "input_registers": "r1[0,1]",
+          "type": "routine",
+          "id": "routine2",
+          "tags": "gray"
+        },
+        {
+          "name": "routine",
+          "label": "\\textsf{U}_\\textsf{Pdiag}^\\dagger",
+          "input_registers": "r1[2,3]",
+          "type": "routine",
+          "id": "routine3",
+          "tags": "gray"
+        }
+      ]
+    }
+  ],
+  "record_format": 2,
+  "modified": "2026-02-18T00:02:41.370Z",
+  "style": {
+    "title_el": {
+      "visible": false
+    },
+    "copyright_el": {
+      "visible": false
+    },
+    "container_el": {
+      "stroke": {
+        "border_style": "none"
+      }
+    }
+  }
+}

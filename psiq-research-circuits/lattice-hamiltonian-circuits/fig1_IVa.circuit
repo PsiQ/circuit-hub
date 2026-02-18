@@ -1,0 +1,88 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "fig1_IVa",
+  "copyright": "Copyright © 2026 PsiQuantum. All rights reserved.",
+  "record_format": 2,
+  "modified": "2026-02-18T00:22:26.617Z",
+  "style": {
+    "title_el": {
+      "visible": false
+    },
+    "copyright_el": {
+      "visible": false
+    },
+    "container_el": {
+      "stroke": {
+        "border_style": "none"
+      }
+    }
+  },
+  "operations": [
+    {
+      "type": "register",
+      "id": "r1",
+      "label": "register",
+      "style": {
+        "enumerate": "custom",
+        "label_el": {
+          "visible": false
+        }
+      },
+      "rail_names": " , , , , , ..., , ,"
+    },
+    {
+      "input_registers": "*",
+      "type": "group",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "dashed"
+          },
+          "shape": "round_rect"
+        }
+      },
+      "id": "group2",
+      "tags": [
+        "yellow"
+      ],
+      "children": [
+        {
+          "input_registers": "r1",
+          "gate_type": "hadamard",
+          "type": "gate",
+          "id": "gate1"
+        },
+        {
+          "input_registers": "*",
+          "type": "group",
+          "style": {
+            "box_el": {
+              "stroke": {
+                "border_style": "dashed"
+              },
+              "shape": "round_rect"
+            }
+          },
+          "id": "group1",
+          "tags": [
+            "red"
+          ],
+          "children": [
+            {
+              "input_registers": "r1",
+              "gate_type": "rz",
+              "type": "gate",
+              "id": "gate3"
+            }
+          ]
+        },
+        {
+          "input_registers": "r1",
+          "gate_type": "hadamard",
+          "type": "gate",
+          "id": "gate2"
+        }
+      ]
+    }
+  ]
+}

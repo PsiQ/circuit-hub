@@ -1,0 +1,200 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "qpe_dpkb",
+  "copyright": "Copyright © 2026 PsiQuantum. All rights reserved.",
+  "record_format": 2,
+  "modified": "2026-02-10T22:18:57.671Z",
+  "style": {
+    "title_el": {
+      "visible": false
+    },
+    "copyright_el": {
+      "visible": false
+    },
+    "container_el": {
+      "stroke": {
+        "border_style": "none"
+      }
+    }
+  },
+  "operations": [
+    {
+      "type": "register",
+      "id": "phase",
+      "style": {
+        "label_el": {
+          "visible": false
+        },
+        "enumerate": "custom"
+      },
+      "label": "\\text{Phase qubits}",
+      "expanded": true,
+      "rail_names": "0,1,2,...,m-1",
+      "size": 5
+    },
+    {
+      "type": "register",
+      "id": "system",
+      "label": "\\text{System qubits}",
+      "expanded": true,
+      "style": {
+        "enumerate": "custom"
+      },
+      "rail_names": "\\"
+    },
+    {
+      "name": "sin",
+      "input_registers": "phase",
+      "type": "routine",
+      "id": "routine1",
+      "label": "\\text{Sine Window}"
+    },
+    {
+      "name": "routine",
+      "label": "\\text{State Preparation}",
+      "input_registers": "system",
+      "type": "routine",
+      "id": "routine13"
+    },
+    {
+      "name": "c-u",
+      "label": "U",
+      "input_registers": "system",
+      "type": "routine",
+      "id": "routine2",
+      "controlled_by": "phase[0]",
+      "tags": "gray"
+    },
+    {
+      "input_registers": "phase,system",
+      "type": "group",
+      "id": "group1",
+      "name": "DPKB-U",
+      "children": [
+        {
+          "name": "c-C",
+          "input_registers": "system",
+          "type": "routine",
+          "id": "routine3",
+          "controlled_by": "~phase[1]",
+          "label": "C"
+        },
+        {
+          "name": "U",
+          "label": "U",
+          "input_registers": "system",
+          "type": "routine",
+          "id": "routine5"
+        },
+        {
+          "name": "c-C",
+          "input_registers": "system",
+          "type": "routine",
+          "id": "routine4",
+          "controlled_by": "~phase[1]",
+          "label": "C^\\dagger"
+        }
+      ]
+    },
+    {
+      "input_registers": "*",
+      "type": "group",
+      "id": "group2",
+      "name": "DPKB-U",
+      "children": [
+        {
+          "name": "c-C",
+          "input_registers": "system",
+          "type": "routine",
+          "id": "routine6",
+          "controlled_by": "~phase[2]",
+          "label": "C"
+        },
+        {
+          "name": "U",
+          "label": "U^2",
+          "input_registers": "system",
+          "type": "routine",
+          "id": "routine7"
+        },
+        {
+          "name": "c-C",
+          "input_registers": "system",
+          "type": "routine",
+          "id": "routine14",
+          "label": "C^\\dagger",
+          "controlled_by": "!phase[2]"
+        }
+      ]
+    },
+    {
+      "type": "label",
+      "label_type": "register-none",
+      "id": "label2",
+      "input_registers": "phase[3,4]",
+      "label": "\\ddots ",
+      "style": {
+        "box_el": {
+          "padding": "t: -41, l: 15, b: 0, r: 15",
+          "text_align": "middle"
+        }
+      }
+    },
+    {
+      "type": "label",
+      "label_type": "register-none",
+      "id": "label3",
+      "input_registers": "system",
+      "label": "...",
+      "style": {
+        "box_el": {
+          "text_align": "middle"
+        }
+      }
+    },
+    {
+      "input_registers": "phase[3],system",
+      "type": "group",
+      "id": "group3",
+      "name": "DPKB-U",
+      "children": [
+        {
+          "name": "c-C",
+          "input_registers": "system",
+          "type": "routine",
+          "id": "routine9",
+          "controlled_by": "!phase[4]",
+          "label": "C"
+        },
+        {
+          "name": "U",
+          "label": "U^{2^{m-2}}",
+          "input_registers": "system",
+          "type": "routine",
+          "id": "routine10"
+        },
+        {
+          "name": "c-C",
+          "input_registers": "system",
+          "type": "routine",
+          "id": "routine15",
+          "label": "C^\\dagger",
+          "controlled_by": "!phase[4]"
+        }
+      ]
+    },
+    {
+      "name": "qft",
+      "input_registers": "phase",
+      "type": "routine",
+      "id": "routine12",
+      "label": "\\text{QFT}^\\dagger"
+    },
+    {
+      "input_registers": "phase",
+      "gate_type": "measurement",
+      "type": "gate",
+      "id": "gate1"
+    }
+  ]
+}

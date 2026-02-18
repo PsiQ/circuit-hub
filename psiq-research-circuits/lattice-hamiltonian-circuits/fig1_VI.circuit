@@ -1,0 +1,122 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "Catalysed Hamming weight phasing",
+  "copyright": "Copyright © 2025 PsiQuantum. All rights reserved.",
+  "operations": [
+    {
+      "type": "register",
+      "label": "\\textsf{Rotation tower}",
+      "style": {
+        "enumerate": "custom",
+        "label_el": {
+          "visible": true
+        }
+      },
+      "rail_names": "\\textsf{0},...,\\textsf{M}",
+      "expanded": true,
+      "id": "undefined1",
+      "tags": "text-theme"
+    },
+    {
+      "id": "hw",
+      "type": "register",
+      "label": "\\text{Hamming weight reg}",
+      "rail_names": "1,...,\\lfloor\\log_2(\\textsf{M})\\rfloor+1",
+      "style": {
+        "enumerate": "custom",
+        "label_el": {
+          "visible": false
+        }
+      },
+      "expanded": true
+    },
+    {
+      "id": "cat",
+      "type": "register",
+      "label": "\\text{Catalyst}",
+      "rail_names": "1,...,\\lfloor\\log_2(\\textsf{M})\\rfloor+1",
+      "style": {
+        "enumerate": "custom",
+        "label_el": {
+          "visible": false
+        }
+      },
+      "expanded": true
+    },
+    {
+      "input_registers": "*",
+      "type": "group",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "dotted"
+          },
+          "shape": "round_rect"
+        }
+      },
+      "id": "group1",
+      "tags": "red",
+      "children": [
+        {
+          "id": "routine",
+          "type": "routine",
+          "name": "routine",
+          "label": "\\textsf{Catalyst Prep}",
+          "input_registers": "cat",
+          "style": {},
+          "tags": ""
+        },
+        {
+          "id": "routine2",
+          "type": "routine",
+          "name": "routine",
+          "label": "\\textsf{Compute Hamming Weight}",
+          "input_registers": "undefined1,hw",
+          "tags": [
+            "collapse-text-vertical",
+            "gray"
+          ],
+          "style": {}
+        },
+        {
+          "id": "routine4",
+          "type": "routine",
+          "name": "routine",
+          "label": "\\textsf{Phasing}",
+          "input_registers": "hw,cat",
+          "tags": [
+            "collapse-text-vertical",
+            "gray"
+          ]
+        },
+        {
+          "id": "routine3",
+          "type": "routine",
+          "name": "routine",
+          "label": "\\textsf{Compute Hamming weight}^\\dagger",
+          "input_registers": "undefined1,hw",
+          "tags": [
+            "collapse-text-vertical",
+            "gray"
+          ],
+          "style": {}
+        }
+      ]
+    }
+  ],
+  "style": {
+    "title_el": {
+      "visible": false
+    },
+    "copyright_el": {
+      "visible": false
+    },
+    "container_el": {
+      "stroke": {
+        "border_style": "none"
+      }
+    }
+  },
+  "record_format": 2,
+  "modified": "2026-02-02T14:40:48.691Z"
+}
