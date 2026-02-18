@@ -1,0 +1,201 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "fswap_w_and_wo_replace",
+  "copyright": "Copyright © 2025 PsiQuantum. All rights reserved.",
+  "operations": [
+    {
+      "type": "register",
+      "id": "a",
+      "label": "a"
+    },
+    {
+      "type": "register",
+      "id": "b1",
+      "label": "b_1"
+    },
+    {
+      "type": "register",
+      "id": "b2",
+      "label": "b_2"
+    },
+    {
+      "type": "register",
+      "id": "b3",
+      "label": "b_3"
+    },
+    {
+      "type": "register",
+      "id": "c",
+      "label": "c"
+    },
+    {
+      "input_registers": "a,b1",
+      "gate_type": "swap",
+      "type": "gate",
+      "id": "gate1"
+    },
+    {
+      "gate_type": "z",
+      "type": "gate",
+      "id": "gate5",
+      "controlled_by": "a,b1"
+    },
+    {
+      "input_registers": "b1,b2",
+      "gate_type": "swap",
+      "type": "gate",
+      "id": "gate6"
+    },
+    {
+      "gate_type": "z",
+      "type": "gate",
+      "id": "gate7",
+      "controlled_by": "b1,b2"
+    },
+    {
+      "input_registers": "b2,b3",
+      "gate_type": "swap",
+      "type": "gate",
+      "id": "gate8"
+    },
+    {
+      "gate_type": "z",
+      "type": "gate",
+      "id": "gate9",
+      "controlled_by": "b2,b3"
+    },
+    {
+      "input_registers": "b3,c",
+      "gate_type": "swap",
+      "type": "gate",
+      "id": "gate10"
+    },
+    {
+      "gate_type": "z",
+      "type": "gate",
+      "id": "gate11",
+      "controlled_by": "b3,c"
+    },
+    {
+      "input_registers": "b2,b3",
+      "gate_type": "swap",
+      "type": "gate",
+      "id": "gate12"
+    },
+    {
+      "gate_type": "z",
+      "type": "gate",
+      "id": "gate13",
+      "controlled_by": "b3,b2"
+    },
+    {
+      "input_registers": "b2,b1",
+      "gate_type": "swap",
+      "type": "gate",
+      "id": "gate14"
+    },
+    {
+      "gate_type": "z",
+      "type": "gate",
+      "id": "gate15",
+      "controlled_by": "b1,b2"
+    },
+    {
+      "input_registers": "b1,a",
+      "gate_type": "swap",
+      "type": "gate",
+      "id": "gate16"
+    },
+    {
+      "gate_type": "z",
+      "type": "gate",
+      "id": "gate17",
+      "controlled_by": "b1,a"
+    },
+    {
+      "name": "routine",
+      "label": "c",
+      "input_registers": "a",
+      "type": "routine",
+      "id": "routine1",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "none"
+          }
+        },
+        "rail_state": "free"
+      }
+    },
+    {
+      "name": "routine",
+      "input_registers": "b1",
+      "type": "routine",
+      "id": "routine2",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "none"
+          }
+        },
+        "rail_state": "free"
+      },
+      "label": "b_1"
+    },
+    {
+      "name": "routine",
+      "label": "b_2",
+      "input_registers": "b2",
+      "type": "routine",
+      "id": "routine3",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "none"
+          }
+        },
+        "rail_state": "free"
+      }
+    },
+    {
+      "name": "routine",
+      "input_registers": "b3",
+      "type": "routine",
+      "id": "routine4",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "none"
+          }
+        },
+        "rail_state": "free"
+      },
+      "label": "b_3"
+    },
+    {
+      "name": "routine",
+      "type": "routine",
+      "id": "routine5",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "none"
+          }
+        },
+        "rail_state": "free"
+      },
+      "input_registers": "c",
+      "label": "a"
+    }
+  ],
+  "record_format": 2,
+  "modified": "2025-11-21T18:55:56.889Z",
+  "style": {
+    "title_el": {
+      "visible": false
+    },
+    "copyright_el": {
+      "visible": false
+    }
+  }
+}

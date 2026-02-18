@@ -1,0 +1,204 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "TFIM",
+  "copyright": "Copyright © 2026 PsiQuantum. All rights reserved.",
+  "operations": [
+    {
+      "type": "register",
+      "id": "r1",
+      "label": "spacer1",
+      "style": {
+        "label_el": {
+          "visible": false
+        },
+        "rail_state": "free",
+        "margin": "t: -8, l: 5, b: -14, r: 5",
+        "padding": "t: 0, l: 0, b: 0, r: 5"
+      }
+    },
+    {
+      "type": "register",
+      "id": "r2",
+      "label": "register_{2}",
+      "rail_names": "\\textsf{0},\\textsf{1},\\textsf{2},\\textsf{3},...,\\textsf{L}^\\textsf{2}-\\textsf{1}",
+      "style": {
+        "enumerate": "custom",
+        "label_el": {
+          "visible": false
+        }
+      }
+    },
+    {
+      "type": "register",
+      "id": "r3",
+      "label": "spacer2",
+      "style": {
+        "label_el": {
+          "visible": false
+        },
+        "rail_state": "free",
+        "margin": "t: -23, l: 5, b: 0, r: 5"
+      }
+    },
+    {
+      "input_registers": "*",
+      "type": "group",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "thin"
+          },
+          "shape": "round_rect"
+        }
+      },
+      "id": "group1",
+      "tags": "gray",
+      "expanded": false,
+      "children": [
+        {
+          "input_registers": "r2",
+          "type": "group",
+          "id": "group2",
+          "expanded": false,
+          "style": {
+            "box_el": {
+              "shape": "round_rect",
+              "stroke": {
+                "border_style": "dashed"
+              }
+            }
+          },
+          "label": "i=1",
+          "children": [
+            {
+              "name": "routine",
+              "label": "\\textsf{X}",
+              "input_registers": "r2",
+              "type": "routine",
+              "id": "routine1",
+              "tags": "yellow"
+            },
+            {
+              "name": "routine",
+              "input_registers": "r2",
+              "type": "routine",
+              "id": "routine4",
+              "tags": "green",
+              "label": "\\textsf{Z}_1"
+            },
+            {
+              "name": "routine",
+              "input_registers": "r2",
+              "type": "routine",
+              "id": "routine5",
+              "tags": "cyan",
+              "label": "\\textsf{Z}_2"
+            },
+            {
+              "name": "routine",
+              "input_registers": "r2",
+              "type": "routine",
+              "id": "routine7",
+              "tags": "purple",
+              "label": "\\textsf{Z}_3"
+            },
+            {
+              "name": "routine",
+              "input_registers": "r2",
+              "type": "routine",
+              "id": "routine8",
+              "tags": "blue",
+              "label": "\\textsf{Z}_4"
+            }
+          ]
+        },
+        {
+          "input_registers": "*",
+          "tags": "ellipsis",
+          "type": "separator",
+          "id": "separator1"
+        },
+        {
+          "input_registers": "r2",
+          "type": "group",
+          "id": "group4",
+          "expanded": false,
+          "style": {
+            "box_el": {
+              "shape": "round_rect",
+              "stroke": {
+                "border_style": "dashed"
+              }
+            }
+          },
+          "label": "i=r",
+          "children": [
+            {
+              "name": "routine",
+              "label": "\\textsf{X}",
+              "input_registers": "r2",
+              "type": "routine",
+              "id": "routine9",
+              "tags": "yellow"
+            },
+            {
+              "name": "routine",
+              "input_registers": "r2",
+              "type": "routine",
+              "id": "routine10",
+              "tags": "green",
+              "label": "\\textsf{Z}_1"
+            },
+            {
+              "name": "routine",
+              "input_registers": "r2",
+              "type": "routine",
+              "id": "routine11",
+              "tags": "cyan",
+              "label": "\\textsf{Z}_2"
+            },
+            {
+              "name": "routine",
+              "input_registers": "r2",
+              "type": "routine",
+              "id": "routine12",
+              "tags": "purple",
+              "label": "\\textsf{Z}_3"
+            },
+            {
+              "name": "routine",
+              "input_registers": "r2",
+              "type": "routine",
+              "id": "routine13",
+              "tags": "blue",
+              "label": "\\textsf{Z}_4"
+            }
+          ]
+        },
+        {
+          "name": "routine",
+          "label": "\\textsf{X}",
+          "input_registers": "r2",
+          "type": "routine",
+          "id": "routine14",
+          "tags": "yellow"
+        }
+      ]
+    }
+  ],
+  "record_format": 2,
+  "modified": "2026-02-02T13:59:13.943Z",
+  "style": {
+    "title_el": {
+      "visible": false
+    },
+    "copyright_el": {
+      "visible": false
+    },
+    "container_el": {
+      "stroke": {
+        "border_style": "none"
+      }
+    }
+  }
+}

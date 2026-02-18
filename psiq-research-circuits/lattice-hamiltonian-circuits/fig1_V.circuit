@@ -1,0 +1,154 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "echo_summary6",
+  "copyright": "Copyright © 2025 PsiQuantum. All rights reserved.",
+  "operations": [
+    {
+      "type": "register",
+      "id": "r1",
+      "label": "register",
+      "size": 2,
+      "style": {
+        "label_el": {
+          "visible": false
+        },
+        "enumerate": "none"
+      }
+    },
+    {
+      "input_registers": "*",
+      "type": "group",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "thin"
+          },
+          "shape": "round_rect"
+        }
+      },
+      "id": "group1",
+      "tags": "gray",
+      "label": "\\textsf{U}_\\textsf{Pdiag}",
+      "children": [
+        {
+          "input_registers": "r1[0]",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate1",
+          "controlled_by": "r1[1]"
+        },
+        {
+          "input_registers": "r1[1]",
+          "gate_type": "hadamard",
+          "type": "gate",
+          "id": "gate3",
+          "controlled_by": "r1[0]"
+        },
+        {
+          "gate_type": "z",
+          "type": "gate",
+          "id": "gate4",
+          "controlled_by": "r1[0,1]"
+        },
+        {
+          "input_registers": "r1[0]",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate2",
+          "controlled_by": "r1[1]"
+        }
+      ]
+    },
+    {
+      "input_registers": "*",
+      "tags": "gap",
+      "type": "separator",
+      "id": "separator1"
+    },
+    {
+      "input_registers": "*",
+      "type": "group",
+      "style": {
+        "box_el": {
+          "stroke": {
+            "border_style": "thin"
+          },
+          "shape": "round_rect"
+        }
+      },
+      "id": "group2",
+      "tags": "gray",
+      "label": "\\exp{(\\mathrm{i}sX\\otimes X)}\\exp{(\\mathrm{i}sY\\otimes Y)}",
+      "children": [
+        {
+          "input_registers": "r1",
+          "gate_type": "rootx",
+          "type": "gate",
+          "id": "gate9"
+        },
+        {
+          "input_registers": "r1[1]",
+          "gate_type": "cnot",
+          "type": "gate",
+          "id": "gate11",
+          "controlled_by": "r1[0]"
+        },
+        {
+          "input_registers": "r1[0]",
+          "gate_type": "hadamard",
+          "type": "gate",
+          "id": "gate6"
+        },
+        {
+          "input_registers": "*",
+          "type": "group",
+          "style": {
+            "box_el": {
+              "stroke": {
+                "border_style": "dotted"
+              },
+              "shape": "round_rect"
+            }
+          },
+          "id": "group3",
+          "tags": "red",
+          "children": [
+            {
+              "input_registers": "r1",
+              "gate_type": "rz",
+              "type": "gate",
+              "id": "gate13"
+            }
+          ]
+        },
+        {
+          "input_registers": "r1[0]",
+          "gate_type": "hadamard",
+          "type": "gate",
+          "id": "gate12"
+        },
+        {
+          "input_registers": "r1",
+          "gate_type": "rootx",
+          "type": "gate",
+          "id": "gate10"
+        }
+      ]
+    }
+  ],
+  "record_format": 2,
+  "modified": "2026-02-02T14:38:33.722Z",
+  "style": {
+    "title_el": {
+      "visible": false
+    },
+    "copyright_el": {
+      "visible": false
+    },
+    "container_el": {
+      "stroke": {
+        "border_style": "none"
+      }
+    }
+  }
+}
