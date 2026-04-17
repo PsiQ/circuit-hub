@@ -1,0 +1,653 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "Schwinger Paper 2: Interaction picture block encoding",
+  "copyright": "Copyright © 2023-2025 PsiQuantum Corp.  All rights reserved.",
+  "style": {
+    "diagrams": {
+      "diagram": {
+        "title_el": {
+          "visible": false
+        },
+        "container_el": {
+          "border": "none"
+        },
+        "show_rail_allocation": true
+      }
+    },
+    "show_properties": true
+  },
+  "record_format": 3,
+  "modified": "2026-04-17T13:57:41.885Z",
+  "root": {
+    "id": "__ROOT__",
+    "type": "__ROOT__",
+    "input_registers": "*",
+    "children": [
+      {
+        "id": "k1",
+        "type": "register",
+        "label": "\\ket{\\mathbf{k_1}}",
+        "style": {
+          "show_rail_labels": false,
+          "rail_state": "entangled",
+          "rail_height": 35,
+          "margin": {
+            "b": "10"
+          }
+        },
+        "tags": [
+          "rail-purple"
+        ]
+      },
+      {
+        "id": "kk",
+        "type": "register",
+        "label": "\\ket{\\mathbf{k_k}}",
+        "style": {
+          "show_rail_labels": false,
+          "rail_state": "entangled"
+        },
+        "tags": [
+          "rail-purple"
+        ]
+      },
+      {
+        "id": "m1",
+        "type": "register",
+        "label": "\\ket{\\mathbf{m_1}}",
+        "size": 1,
+        "rail_names": "\\mathbf{log_2 M\\ \\ \\ }",
+        "style": {
+          "show_rail_labels": true,
+          "rail_state": "entangled",
+          "margin": {
+            "v": "20"
+          },
+          "rail_height": 35
+        },
+        "tags": [
+          "rail-purple"
+        ]
+      },
+      {
+        "id": "mk",
+        "type": "register",
+        "label": "\\ket{\\mathbf{m_k}}",
+        "size": 1,
+        "rail_names": "\\mathbf{log_2 M\\ \\ \\ }",
+        "style": {
+          "show_rail_labels": true,
+          "rail_state": "entangled"
+        },
+        "tags": [
+          "rail-purple"
+        ]
+      },
+      {
+        "id": "c1",
+        "type": "register",
+        "label": "\\ket{\\mathbf{c_1}}",
+        "style": {
+          "show_rail_labels": false,
+          "rail_state": "entangled",
+          "margin": {
+            "t": "20",
+            "b": "10"
+          }
+        }
+      },
+      {
+        "id": "ck",
+        "type": "register",
+        "label": "\\ket{\\mathbf{c_K}}",
+        "style": {
+          "show_rail_labels": false,
+          "rail_state": "entangled"
+        }
+      },
+      {
+        "id": "0_a",
+        "type": "register",
+        "label": "\\ket{\\mathbf{0}}_{\\mathbf{a}}",
+        "rail_names": "\\mathbf{N+2}",
+        "style": {
+          "show_rail_labels": true,
+          "rail_state": "entangled",
+          "margin": {
+            "t": "20",
+            "b": "10"
+          }
+        },
+        "tags": [
+          "rail-orange"
+        ]
+      },
+      {
+        "id": "psi",
+        "type": "register",
+        "label": "\\ket{\\mathbf{\\psi}}",
+        "size": 1,
+        "rail_names": "\\mathbf{N(\\eta+1)}",
+        "style": {
+          "show_rail_labels": true,
+          "rail_state": "entangled"
+        },
+        "tags": [
+          "rail-orange"
+        ]
+      },
+      {
+        "id": "column",
+        "type": "column",
+        "input_registers": "*",
+        "name": "prep-col\n",
+        "children": [
+          {
+            "id": "routine",
+            "type": "routine",
+            "name": "prep",
+            "label": "\\textbf{PREP} \\mathbf{\\sqrt{\\frac{t^k}{k!}}}",
+            "input_registers": "k1,kk",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "bg": "white",
+                "text_color": "purple",
+                "border": "2 solid #AB7ED0",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-purple",
+              "text-purple"
+            ]
+          },
+          {
+            "id": "gate",
+            "type": "gate",
+            "gate_type": "cnot",
+            "input_registers": "c1,ck"
+          },
+          {
+            "id": "box",
+            "type": "group",
+            "name": "kdots",
+            "label": "\\vdots",
+            "input_registers": "kk",
+            "style": {
+              "box_el": {
+                "text_valign": "middle",
+                "border": "none",
+                "margin": {
+                  "l": "-200",
+                  "t": "-25"
+                },
+                "stroke": {
+                  "border_style": "none"
+                }
+              }
+            },
+            "tags": [
+              "border-black"
+            ]
+          },
+          {
+            "id": "box2",
+            "type": "group",
+            "name": "mdots",
+            "label": "\\vdots",
+            "input_registers": "mk",
+            "style": {
+              "box_el": {
+                "text_valign": "middle",
+                "border": "none",
+                "margin": {
+                  "t": "-45",
+                  "l": "-200"
+                },
+                "stroke": {
+                  "border_style": "none"
+                }
+              }
+            },
+            "tags": [
+              "border-black"
+            ]
+          },
+          {
+            "id": "box3",
+            "type": "group",
+            "name": "kdots",
+            "label": "\\vdots",
+            "input_registers": "ck",
+            "style": {
+              "box_el": {
+                "text_valign": "middle",
+                "border": "none",
+                "margin": {
+                  "l": "-200",
+                  "t": "-25"
+                },
+                "stroke": {
+                  "border_style": "none"
+                }
+              }
+            },
+            "tags": [
+              "border-black"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "gate2",
+        "type": "gate",
+        "gate_type": "cnot",
+        "input_registers": "m1",
+        "controlled_by": "k1",
+        "tags": []
+      },
+      {
+        "id": "gate3",
+        "type": "gate",
+        "gate_type": "hadamard",
+        "input_registers": "m1",
+        "controlled_by": "!k1",
+        "tags": []
+      },
+      {
+        "id": "gate4",
+        "type": "gate",
+        "gate_type": "cnot",
+        "input_registers": "mk",
+        "controlled_by": "kk",
+        "tags": []
+      },
+      {
+        "id": "gate5",
+        "type": "gate",
+        "gate_type": "hadamard",
+        "input_registers": "mk",
+        "controlled_by": "!kk",
+        "tags": []
+      },
+      {
+        "id": "routine2",
+        "type": "routine",
+        "name": "sort",
+        "label": "\\textbf{Sort}",
+        "input_registers": "m1,mk",
+        "style": {
+          "expanded": true,
+          "box_el": {
+            "margin": {
+              "v": "2"
+            },
+            "padding": {
+              "v": "5",
+              "h": "10"
+            },
+            "border": "2 solid #227ABF",
+            "bg": "white",
+            "text_color": "#227ABF",
+            "stroke": {
+              "border_style": "medium"
+            }
+          }
+        },
+        "tags": [
+          "border-purple",
+          "text-purple"
+        ]
+      },
+      {
+        "id": "gate6",
+        "type": "gate",
+        "gate_type": "cnot",
+        "input_registers": "m1",
+        "controlled_by": "k1",
+        "tags": []
+      },
+      {
+        "id": "gate7",
+        "type": "gate",
+        "gate_type": "cnot",
+        "input_registers": "mk",
+        "controlled_by": "kk",
+        "tags": []
+      },
+      {
+        "id": "column2",
+        "type": "column",
+        "input_registers": "*",
+        "style": {
+          "connect": "children"
+        },
+        "children": [
+          {
+            "id": "routine3",
+            "type": "routine",
+            "name": "m0",
+            "label": "\\mathbf{m_0}",
+            "input_registers": "m1[0]",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "shape": "hexagon",
+                "padding": {
+                  "h": "10"
+                },
+                "border": "2 solid #ee9835",
+                "bg": "white",
+                "text_color": "#ee9835",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          },
+          {
+            "id": "routine4",
+            "type": "routine",
+            "name": "e",
+            "label": "\\large{\\mathbf{e^{-i \\frac{H_0 t m_0}{\\alpha M}}}}",
+            "input_registers": "psi",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "shape": "round_rect",
+                "margin": {
+                  "t": "-10",
+                  "b": "-10"
+                },
+                "text_color": "#ee9835",
+                "border": "2 solid #ee9835",
+                "bg": "white",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "routine6",
+        "type": "routine",
+        "name": "BE",
+        "label": "\\large{\\mathbf{\\text{BE} \\left [ \\frac{V}{\\alpha} \\right]}}",
+        "input_registers": "0_a,psi",
+        "controlled_by": "!k1[0]",
+        "style": {
+          "expanded": true,
+          "box_el": {
+            "shape": "round_rect",
+            "border": "2 solid #ee9835",
+            "text_color": "#ee9835",
+            "bg": "white",
+            "margin": {
+              "b": "-10"
+            },
+            "stroke": {
+              "border_style": "medium"
+            }
+          }
+        },
+        "tags": [
+          "border-orange"
+        ]
+      },
+      {
+        "id": "column5",
+        "type": "column",
+        "input_registers": "*",
+        "children": [
+          {
+            "id": "gate8",
+            "type": "gate",
+            "gate_type": "cnot",
+            "input_registers": "c1[0]",
+            "controlled_by": "0_a[0]"
+          },
+          {
+            "id": "routine5",
+            "type": "routine",
+            "name": "-=",
+            "label": "\\mathbf{-=}",
+            "input_registers": "mk",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "margin": {
+                  "t": "-25",
+                  "l": "-5",
+                  "r": "-5"
+                },
+                "border": "2 solid black",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              },
+              "width": 40
+            }
+          }
+        ]
+      },
+      {
+        "id": "column3",
+        "type": "column",
+        "input_registers": "*",
+        "style": {
+          "connect": "children"
+        },
+        "children": [
+          {
+            "id": "routine7",
+            "type": "routine",
+            "name": "m0",
+            "label": "\\mathbf{m_K-m_{K-1}}",
+            "input_registers": "mk",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "shape": "hexagon",
+                "border": "2 solid #ee9835",
+                "bg": "white",
+                "text_color": "#ee9835",
+                "padding": {
+                  "h": "10"
+                },
+                "margin": {
+                  "v": "0"
+                },
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          },
+          {
+            "id": "routine8",
+            "type": "routine",
+            "name": "e",
+            "label": "\\large{\\mathbf{e^{-i\\frac{H_0t(m_K-m_{K-1})}{\\alpha M}}}}",
+            "input_registers": "psi",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "shape": "round_rect",
+                "margin": {
+                  "v": "-8"
+                },
+                "border": "2 solid #ee9835",
+                "bg": "white",
+                "text_color": "#ee9835",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "routine10",
+        "type": "routine",
+        "name": "+=",
+        "label": "\\mathbf{+=}",
+        "input_registers": "mk",
+        "style": {
+          "expanded": true,
+          "box_el": {
+            "bg": "white",
+            "text_color": "black",
+            "border": "2 solid black",
+            "margin": {
+              "t": "-25",
+              "l": "-5",
+              "r": "-5"
+            },
+            "stroke": {
+              "border_style": "medium"
+            }
+          },
+          "width": 40
+        }
+      },
+      {
+        "id": "routine12",
+        "type": "routine",
+        "name": "BE",
+        "label": "\\large{\\mathbf{\\text{BE} \\left [ \\frac{V}{\\alpha} \\right]}}",
+        "input_registers": "0_a,psi",
+        "controlled_by": "!kk",
+        "style": {
+          "expanded": true,
+          "box_el": {
+            "shape": "round_rect",
+            "border": "2 solid #ee9835",
+            "bg": "white",
+            "text_color": "#ee9835",
+            "margin": {
+              "l": "-5",
+              "b": "-10",
+              "r": "-5"
+            },
+            "stroke": {
+              "border_style": "medium"
+            }
+          }
+        },
+        "tags": [
+          "border-orange"
+        ]
+      },
+      {
+        "id": "gate9",
+        "type": "gate",
+        "gate_type": "cnot",
+        "input_registers": "ck",
+        "controlled_by": "0_a[0]"
+      },
+      {
+        "id": "column4",
+        "type": "column",
+        "input_registers": "*",
+        "style": {
+          "connect": "children",
+          "align_children": "middle"
+        },
+        "children": [
+          {
+            "id": "routine13",
+            "type": "routine",
+            "name": "m0",
+            "label": "\\mathbf{m_K}",
+            "input_registers": "mk",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "shape": "hexagon",
+                "padding": {
+                  "h": "10"
+                },
+                "border": "2 solid #ee9835",
+                "bg": "white",
+                "text_color": "#ee9835",
+                "margin": {
+                  "v": "0"
+                },
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          },
+          {
+            "id": "routine14",
+            "type": "routine",
+            "name": "e",
+            "label": "\\large{\\mathbf{e^{-i\\frac{H_0tm_K}{\\alpha M}}}}",
+            "input_registers": "psi",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "shape": "round_rect",
+                "margin": {
+                  "v": "-8",
+                  "h": "-15"
+                },
+                "border": "2 solid #ee9835",
+                "bg": "white",
+                "text_color": "#ee9835",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "routine9",
+        "type": "routine",
+        "name": "prepd",
+        "label": "\\textbf{PREP}\\dagger",
+        "input_registers": "k1,kk,m1,mk",
+        "style": {
+          "expanded": true,
+          "box_el": {
+            "border": "2 solid black",
+            "bg": "white",
+            "text_color": "black",
+            "stroke": {
+              "border_style": "medium"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

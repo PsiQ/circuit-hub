@@ -1,0 +1,589 @@
+{
+  "record_type": "psiquantum.circuit",
+  "title": "Schwinger Paper 1: Second-order product forumla",
+  "copyright": "Copyright © 2023-2025 PsiQuantum Corp.  All rights reserved.",
+  "style": {
+    "diagrams": {
+      "diagram": {
+        "title_el": {
+          "visible": false
+        },
+        "container_el": {
+          "border": "none",
+          "padding": {
+            "h": "30",
+            "v": "60"
+          }
+        },
+        "copyright_el": {
+          "visible": false
+        }
+      }
+    },
+    "registers": {
+      "register": {
+        "rail_height": 60
+      }
+    }
+  },
+  "record_format": 3,
+  "modified": "2026-04-17T14:07:17.827Z",
+  "root": {
+    "id": "__ROOT__",
+    "type": "__ROOT__",
+    "input_registers": "*",
+    "children": [
+      {
+        "id": "eminus",
+        "type": "register",
+        "label": "\\large{\n \\boldsymbol{\n e^-\n}}",
+        "style": {
+          "rail_state": "entangled",
+          "rail_height": 45
+        }
+      },
+      {
+        "id": "l",
+        "type": "register",
+        "label": "\\large{\n \\boldsymbol{\n l\n}}",
+        "rail_names": "\\large{\\eta}",
+        "style": {
+          "rail_state": "entangled",
+          "rail_height": 45
+        }
+      },
+      {
+        "id": "eplus",
+        "type": "register",
+        "label": "\\large{\n \\boldsymbol{\n e^+\n}}",
+        "style": {
+          "rail_state": "entangled",
+          "rail_height": 45
+        }
+      },
+      {
+        "id": "l2",
+        "type": "register",
+        "label": "\\large{\n \\boldsymbol{\n l\n}}",
+        "rail_names": "\\",
+        "style": {
+          "rail_state": "entangled",
+          "rail_height": 45
+        }
+      },
+      {
+        "id": "eminus2",
+        "type": "register",
+        "label": "\\large{\n \\boldsymbol{\n e^-\n}}",
+        "style": {
+          "rail_state": "entangled",
+          "rail_height": 45
+        }
+      },
+      {
+        "id": "anc",
+        "type": "register",
+        "label": "",
+        "style": {
+          "rail_state": "free"
+        }
+      },
+      {
+        "id": "column",
+        "type": "column",
+        "input_registers": "*",
+        "name": "hm",
+        "children": [
+          {
+            "id": "routine",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{purple}{H_M}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eminus",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #AB7ED0",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-purple"
+            ]
+          },
+          {
+            "id": "routine2",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{grey}{H_E}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "l",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #666",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-gray"
+            ]
+          },
+          {
+            "id": "routine3",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{purple}{H_M}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eplus",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #AB7ED0",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-purple"
+            ]
+          },
+          {
+            "id": "routine13",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{grey}{H_E}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "l2",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #666",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-gray"
+            ]
+          },
+          {
+            "id": "routine14",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{purple}{H_M}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eminus2",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #AB7ED0",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-purple"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "column8",
+        "type": "column",
+        "input_registers": "*",
+        "name": "h3",
+        "children": [
+          {
+            "id": "routine31",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{BurntOrange}{H_3}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eminus,l,eplus,",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #ee9835",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          },
+          {
+            "id": "routine32",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{BurntOrange}{H_3}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eminus2,anc",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #ee9835",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "column7",
+        "type": "column",
+        "input_registers": "*",
+        "name": "h4",
+        "children": [
+          {
+            "id": "routine29",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{BurntOrange}{H_4}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eminus,l,eplus,",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #ee9835",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          },
+          {
+            "id": "routine30",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{BurntOrange}{H_4}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eminus2,anc",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #ee9835",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "routine17",
+        "type": "routine",
+        "name": "h5",
+        "label": "\\large{e^{\n  -i\n  \\textcolor{BurntOrange}{H_\\textbf{5}}\n  \\frac{t}{2r}\n}}",
+        "input_registers": "eplus,l2,eminus2",
+        "style": {
+          "expanded": true,
+          "box_el": {
+            "border": "3 solid #ee9835",
+            "bg": "white",
+            "text_color": "black",
+            "stroke": {
+              "border_style": "medium"
+            }
+          }
+        },
+        "tags": [
+          "border-orange"
+        ]
+      },
+      {
+        "id": "routine18",
+        "type": "routine",
+        "name": "h6",
+        "label": "\\large{e^{\n  -i\n  \\textcolor{BurntOrange}{H_\\textbf{6}}\n  \\frac{t}{r}\n}}",
+        "input_registers": "eplus,l2,eminus2",
+        "style": {
+          "expanded": true,
+          "box_el": {
+            "border": "3 solid #ee9835",
+            "bg": "white",
+            "text_color": "black",
+            "stroke": {
+              "border_style": "medium"
+            }
+          }
+        },
+        "tags": [
+          "border-orange"
+        ]
+      },
+      {
+        "id": "routine19",
+        "type": "routine",
+        "name": "h5",
+        "label": "\\large{e^{\n  -i\n  \\textcolor{BurntOrange}{H_\\textbf{5}}\n  \\frac{t}{2r}\n}}",
+        "input_registers": "eplus,l2,eminus2",
+        "style": {
+          "expanded": true,
+          "box_el": {
+            "border": "3 solid #ee9835",
+            "bg": "white",
+            "text_color": "black",
+            "stroke": {
+              "border_style": "medium"
+            }
+          }
+        },
+        "tags": [
+          "orange",
+          "border-orange"
+        ]
+      },
+      {
+        "id": "column4",
+        "type": "column",
+        "input_registers": "*",
+        "name": "h4",
+        "children": [
+          {
+            "id": "routine20",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{BurntOrange}{H_4}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eminus,l,eplus,",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #ee9835",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          },
+          {
+            "id": "routine21",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{BurntOrange}{H_4}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eminus2,anc",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #ee9835",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "column5",
+        "type": "column",
+        "input_registers": "*",
+        "name": "h3",
+        "children": [
+          {
+            "id": "routine22",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{BurntOrange}{H_3}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eminus,l,eplus,",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #ee9835",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          },
+          {
+            "id": "routine23",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{BurntOrange}{H_3}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eminus2,anc",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #ee9835",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-orange"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "column6",
+        "type": "column",
+        "input_registers": "*",
+        "name": "hm",
+        "children": [
+          {
+            "id": "routine24",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{purple}{H_M}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eminus",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #AB7ED0",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-purple"
+            ]
+          },
+          {
+            "id": "routine25",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{grey}{H_E}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "l",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #666",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-gray"
+            ]
+          },
+          {
+            "id": "routine26",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{purple}{H_M}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eplus",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #AB7ED0",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-purple"
+            ]
+          },
+          {
+            "id": "routine27",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{grey}{H_E}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "l2",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #666",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-gray"
+            ]
+          },
+          {
+            "id": "routine28",
+            "type": "routine",
+            "name": "",
+            "label": "\\large{e^{\n  -i\n  \\textcolor{purple}{H_M}\n  \\frac{t}{2r}\n}}",
+            "input_registers": "eminus2",
+            "style": {
+              "expanded": true,
+              "box_el": {
+                "border": "3 solid #AB7ED0",
+                "bg": "white",
+                "text_color": "black",
+                "stroke": {
+                  "border_style": "medium"
+                }
+              }
+            },
+            "tags": [
+              "border-purple"
+            ]
+          }
+        ]
+      },
+      {
+        "input_registers": "*",
+        "tags": "spacer",
+        "type": "separator",
+        "id": "separator1"
+      }
+    ]
+  }
+}
