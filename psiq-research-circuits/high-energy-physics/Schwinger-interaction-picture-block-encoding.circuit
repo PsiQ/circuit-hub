@@ -1,6 +1,6 @@
 {
   "record_type": "psiquantum.circuit",
-  "title": "Schwinger Paper 2: Interaction picture block encoding",
+  "title": "Interaction picture block encoding",
   "copyright": "Copyright © 2023-2025 PsiQuantum Corp.  All rights reserved.",
   "style": {
     "diagrams": {
@@ -17,7 +17,7 @@
     "show_properties": true
   },
   "record_format": 3,
-  "modified": "2026-04-17T13:57:41.885Z",
+  "modified": "2026-04-27T21:32:29.848Z",
   "root": {
     "id": "__ROOT__",
     "type": "__ROOT__",

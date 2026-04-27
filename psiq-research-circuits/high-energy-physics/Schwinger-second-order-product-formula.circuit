@@ -1,6 +1,6 @@
 {
   "record_type": "psiquantum.circuit",
-  "title": "Schwinger Paper 1: Second-order product forumla",
+  "title": "Time evolution of the Schwinger model: Second order product formula",
   "copyright": "Copyright © 2023-2025 PsiQuantum Corp.  All rights reserved.",
   "style": {
     "diagrams": {
@@ -27,7 +27,7 @@
     }
   },
   "record_format": 3,
-  "modified": "2026-04-17T14:07:17.827Z",
+  "modified": "2026-04-27T21:28:52.674Z",
   "root": {
     "id": "__ROOT__",
     "type": "__ROOT__",
